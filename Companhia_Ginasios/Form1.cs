@@ -13,16 +13,14 @@ namespace Companhia_Ginasios
     {
 
         private Database db = new Database();
-        private bool adding;
-        private bool display;
 
         public Form1()
         {
             InitializeComponent();
-            displayGym(db.DbServer, db.DbName, db.UserName, db.UserPass);
+            DisplayGym(db.DbServer, db.DbName, db.UserName, db.UserPass);
         }
 
-        public void displayGym(string dbServer, string dbName, string userName, string userPass)
+        private void DisplayGym(string dbServer, string dbName, string userName, string userPass)
         {
 
             SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
@@ -61,20 +59,31 @@ namespace Companhia_Ginasios
                 CN.Close();
         }
 
-        public void addGym(string dbServer, string dbName, string userName, string userPass)
+        private void AddGym(string dbServer, string dbName, string userName, string userPass, Ginasios gym)
         {
-
             SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
                                                         "; uid = " + userName + ";" + "password = " + userPass);
 
-            CN.Open();
-            if (CN.State == ConnectionState.Open)
+            db.Logged = true;
+            SqlCommand sqlcmd = new SqlCommand("INSERT INTO GymCompany.Ginasio(NIF, Telefone, Morada, Gestor) VALUES(@nif, @telefone, @morada, @gestor)");
+            sqlcmd.Parameters.Clear();
+            sqlcmd.Parameters.AddWithValue("@nif", gym.NIF);
+            sqlcmd.Parameters.AddWithValue("@telefone", gym.Telefone);
+            sqlcmd.Parameters.AddWithValue("@morada", gym.Morada);
+            sqlcmd.Parameters.AddWithValue("@gestor", gym.Gestor);
+            sqlcmd.Connection = CN;
+
+            try
             {
-                db.Logged = true;
-                SqlCommand sqlcmd = new SqlCommand("INSERT INTO GymCompany.Ginasio(NIF, Telefone, Morada, Gestor) VALUES(@nif, @telefone, @morada, @gestor)", CN);
-                sqlcmd.Parameters.Clear();
-                Ginasios gym = new Ginasios();
-                //sqlcmd.Parameters.AddWithValue("@nif", gym.telefone); //criar new gym
+                sqlcmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to add gym in database. \n ERROR MESSAGE: \n" + ex.Message);
+            }
+            finally
+            {
+                CN.Close();
             }
         }
 
@@ -90,7 +99,7 @@ namespace Companhia_Ginasios
 
         private void AddBttn_Click(object sender, EventArgs e)
         {
-            adding = true;
+            ClearFields();
             listBox1.Visible = false;
             listBox1.Enabled = false;
             panel1.Enabled = true;
@@ -101,13 +110,44 @@ namespace Companhia_Ginasios
 
         private void ListBttn_Click(object sender, EventArgs e)
         {
-            display = true;
             listBox1.Visible = true;
             listBox1.Enabled = true;
             panel1.Visible = false;
             panel1.Enabled = false;
             button1.Visible = true;
             button1.Enabled = true;
+        }
+
+        private void SaveBttn_Click(object sender, EventArgs e)
+        {
+            Ginasios gym = new Ginasios();
+            try
+            {
+                gym.NIF = txtNIF.Text;
+                gym.Telefone = txtPhone.Text;
+                gym.Morada = txtAddress.Text;
+                gym.Gestor = txtManager.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            AddGym(db.DbServer, db.DbName, db.UserName, db.UserPass, gym);
+            listBox1.Visible = true;
+            listBox1.Enabled = true;
+            panel1.Enabled = false;
+            panel1.Visible = false;
+            button1.Visible = true;
+            button1.Enabled = true;
+        }
+
+        public void ClearFields()
+        {
+            txtAddress.Text = "";
+            txtManager.Text = "";
+            txtNIF.Text = "";
+            txtPhone.Text = "";
         }
     }
 }
