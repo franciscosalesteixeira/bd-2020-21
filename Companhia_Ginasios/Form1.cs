@@ -108,6 +108,7 @@ namespace Companhia_Ginasios
         private void AddBttn_Click(object sender, EventArgs e)
         {
             ClearFields();
+            ShowAddBttns();
             listBox1.Visible = false;
             listBox1.Enabled = false;
             panel1.Enabled = true;
@@ -119,6 +120,7 @@ namespace Companhia_Ginasios
         private void ListBttn_Click(object sender, EventArgs e)
         {
             RefreshListBox();
+            HideAddBttns();
             listBox1.Visible = true;
             listBox1.Enabled = true;
             panel1.Visible = false;
@@ -164,6 +166,50 @@ namespace Companhia_Ginasios
         {
             listBox1.Items.Clear();
             DisplayGym(db.DbServer, db.DbName, db.UserName, db.UserPass);
+        }
+
+        public void HideAddBttns ()
+        {
+            SaveBttn.Enabled = false;
+            SaveBttn.Visible = false;
+            label1.Enabled = false;
+            label1.Visible = false;
+            txtNIF.Enabled = false;
+            txtNIF.Visible = false;
+            label2.Enabled = false;
+            label2.Visible = false;
+            txtPhone.Enabled = false;
+            txtPhone.Visible = false;
+            label3.Enabled = false;
+            label3.Visible = false;
+            txtAddress.Enabled = false;
+            txtAddress.Visible = false;
+            label4.Enabled = false;
+            label4.Visible = false;
+            txtManager.Enabled = false;
+            txtManager.Visible = false;
+        }
+
+        public void ShowAddBttns()
+        {
+            SaveBttn.Enabled = true;
+            SaveBttn.Visible = true;
+            label1.Enabled = true;
+            label1.Visible = true;
+            txtNIF.Enabled = true;
+            txtNIF.Visible = true;
+            label2.Enabled = true;
+            label2.Visible = true;
+            txtPhone.Enabled = true;
+            txtPhone.Visible = true;
+            label3.Enabled = true;
+            label3.Visible = true;
+            txtAddress.Enabled = true;
+            txtAddress.Visible = true;
+            label4.Enabled = true;
+            label4.Visible = true;
+            txtManager.Enabled = true;
+            txtManager.Visible = true;
         }
     }
 }
