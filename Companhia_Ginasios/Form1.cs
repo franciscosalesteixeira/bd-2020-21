@@ -62,29 +62,37 @@ namespace Companhia_Ginasios
         private void AddGym(string dbServer, string dbName, string userName, string userPass, Ginasios gym)
         {
             SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
-                                                        "; uid = " + userName + ";" + "password = " + userPass);
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
 
-            db.Logged = true;
-            SqlCommand sqlcmd = new SqlCommand("INSERT INTO GymCompany.Ginasio(NIF, Telefone, Morada, Gestor) VALUES(@nif, @telefone, @morada, @gestor)");
-            sqlcmd.Parameters.Clear();
-            sqlcmd.Parameters.AddWithValue("@nif", gym.NIF);
-            sqlcmd.Parameters.AddWithValue("@telefone", gym.Telefone);
-            sqlcmd.Parameters.AddWithValue("@morada", gym.Morada);
-            sqlcmd.Parameters.AddWithValue("@gestor", gym.Gestor);
-            sqlcmd.Connection = CN;
+            SqlCommand sqlcmd = new SqlCommand();
+
+            CN.Open();
+            if (CN.State == ConnectionState.Open)
+            {
+                db.Logged = true;
+                sqlcmd.CommandText = "INSERT INTO GymCompany.Ginasio(NIF, Telefone, Morada, Gestor) VALUES(@nif, @telefone, @morada, @gestor)";
+                sqlcmd.Parameters.Clear();
+                sqlcmd.Parameters.AddWithValue("@nif", gym.NIF);
+                sqlcmd.Parameters.AddWithValue("@telefone", gym.Telefone);
+                sqlcmd.Parameters.AddWithValue("@morada", gym.Morada);
+                sqlcmd.Parameters.AddWithValue("@gestor", gym.Gestor);
+                sqlcmd.Connection = CN;
+            }
 
             try
             {
                 sqlcmd.ExecuteNonQuery();
             }
+            
             catch (Exception ex)
             {
-                throw new Exception("Failed to add gym in database. \n ERROR MESSAGE: \n" + ex.Message);
+                db.Logged = false;
+                db.Error = "Failed to add gym in database. \n ERROR MESSAGE: \n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
             }
-            finally
-            {
+
+            if (CN.State == ConnectionState.Open)
                 CN.Close();
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -110,6 +118,7 @@ namespace Companhia_Ginasios
 
         private void ListBttn_Click(object sender, EventArgs e)
         {
+            RefreshListBox();
             listBox1.Visible = true;
             listBox1.Enabled = true;
             panel1.Visible = false;
@@ -134,6 +143,7 @@ namespace Companhia_Ginasios
             }
 
             AddGym(db.DbServer, db.DbName, db.UserName, db.UserPass, gym);
+            RefreshListBox();
             listBox1.Visible = true;
             listBox1.Enabled = true;
             panel1.Enabled = false;
@@ -148,6 +158,12 @@ namespace Companhia_Ginasios
             txtManager.Text = "";
             txtNIF.Text = "";
             txtPhone.Text = "";
+        }
+
+        public void RefreshListBox()
+        {
+            listBox1.Items.Clear();
+            DisplayGym(db.DbServer, db.DbName, db.UserName, db.UserPass);
         }
     }
 }

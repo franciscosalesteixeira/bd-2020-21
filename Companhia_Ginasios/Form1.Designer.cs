@@ -31,7 +31,6 @@ namespace Companhia_Ginasios
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.ListBttn = new System.Windows.Forms.Button();
             this.AddBttn = new System.Windows.Forms.Button();
@@ -45,18 +44,9 @@ namespace Companhia_Ginasios
             this.label2 = new System.Windows.Forms.Label();
             this.txtNIF = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(651, 364);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 38);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Table GymCompany.Ginasios";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // listBox1
             // 
@@ -73,7 +63,7 @@ namespace Companhia_Ginasios
             this.ListBttn.Name = "ListBttn";
             this.ListBttn.Size = new System.Drawing.Size(75, 23);
             this.ListBttn.TabIndex = 2;
-            this.ListBttn.Text = "GymList";
+            this.ListBttn.Text = "Gym List";
             this.ListBttn.UseVisualStyleBackColor = true;
             this.ListBttn.Click += new System.EventHandler(this.ListBttn_Click);
             // 
@@ -83,7 +73,7 @@ namespace Companhia_Ginasios
             this.AddBttn.Name = "AddBttn";
             this.AddBttn.Size = new System.Drawing.Size(75, 23);
             this.AddBttn.TabIndex = 3;
-            this.AddBttn.Text = "AddGym";
+            this.AddBttn.Text = "Add Gym";
             this.AddBttn.UseVisualStyleBackColor = true;
             this.AddBttn.Click += new System.EventHandler(this.AddBttn_Click);
             // 
@@ -177,16 +167,26 @@ namespace Companhia_Ginasios
             this.label1.TabIndex = 0;
             this.label1.Text = "NIF";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(651, 364);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(137, 38);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Table GymCompany.Ginasios";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.AddBttn);
             this.Controls.Add(this.ListBttn);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Gym Company";
             this.panel1.ResumeLayout(false);
@@ -196,8 +196,6 @@ namespace Companhia_Ginasios
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button ListBttn;
         private System.Windows.Forms.Button AddBttn;
@@ -211,5 +209,6 @@ namespace Companhia_Ginasios
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNIF;
+        private Button button1;
     }
 }
