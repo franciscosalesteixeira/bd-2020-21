@@ -68,8 +68,10 @@ namespace Companhia_Ginasios
             // 
             this.textBox2.Location = new System.Drawing.Point(91, 99);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(217, 23);
             this.textBox2.TabIndex = 3;
+            this.textBox2.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -103,6 +105,7 @@ namespace Companhia_Ginasios
             this.Controls.Add(this.button1);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

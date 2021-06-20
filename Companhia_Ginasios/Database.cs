@@ -61,30 +61,6 @@ namespace Companhia_Ginasios
             set { this.logged = value; }
         }
 
-        public void DbLogin(string dbServer, string dbName, string userName, string userPass)
-        {
-            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
-                                                       "; uid = " + userName + ";" + "password = " + userPass);
-
-            try
-            {
-                CN.Open();
-                if (CN.State == ConnectionState.Open)
-                {
-                    logged = true;
-                    error = "";
-                }
-            }
-            catch (Exception ex)
-            {
-                logged = false;
-                error = "Failed to login due to the following error: \r\n" + ex.Message;
-            }
-
-            if (CN.State == ConnectionState.Open)
-                CN.Close();
-        }
-
         public string getTableContent(string dbServer, string dbName, string userName, string userPass)
         {
             string str = "";

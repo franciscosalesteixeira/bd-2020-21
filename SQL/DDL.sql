@@ -128,6 +128,12 @@ CREATE TABLE GymCompany.Leciona (
 	PRIMARY KEY(Numero_Professor, Designacao_Aula)
 );
 
+CREATE TABLE GymCompany.Login (
+	Username		VARCHAR(30)		NOT NULL,
+	Pass			VARCHAR(30)		NOT NULL,
+	PRIMARY KEY (Username)
+);
+
 ALTER TABLE GymCompany.Funcionario
 	ADD FOREIGN KEY (Numero_CC) REFERENCES GymCompany.Pessoa(Numero_CC);
 

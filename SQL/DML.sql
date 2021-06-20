@@ -193,7 +193,7 @@ INSERT INTO GymCompany.Leciona VALUES (154, 'SDF-SAB');
 INSERT INTO GymCompany.Leciona VALUES (154, 'SDF-QUI');
 
 
---GymCompany.Produto
+-- GymCompany.Produto
 INSERT INTO GymCompany.Produto VALUES ('PTP1', 'Toalha preta grande', 15, 10);
 INSERT INTO GymCompany.Produto VALUES ('PTP2', 'Toalha preta pequena', 10.50, 20);
 INSERT INTO GymCompany.Produto VALUES ('PTB1', 'Toalha branca grande', 15, 30);
@@ -219,7 +219,7 @@ INSERT INTO GymCompany.Produto VALUES ('PBP2', 'Barra proteica caramelo', 2, 30)
 INSERT INTO GymCompany.Produto VALUES ('PBP3', 'Barra proteica avela', 2, 30);
 
 
---GymCompany.Vende
+-- GymCompany.Vende
 INSERT INTO GymCompany.Vende VALUES (124991734, 'PTP2');
 INSERT INTO GymCompany.Vende VALUES (124991734, 'PTB2');
 INSERT INTO GymCompany.Vende VALUES (124991734, 'PTC2');
@@ -251,7 +251,7 @@ INSERT INTO GymCompany.Vende VALUES (174753276, 'PBP2');
 INSERT INTO GymCompany.Vende VALUES (174753276, 'PBP3');
 
 
---GymCompany.Equipamento
+-- GymCompany.Equipamento
 INSERT INTO GymCompany.Equipamento VALUES ('EA5', 'Altere 5kg', 4);
 INSERT INTO GymCompany.Equipamento VALUES ('EA7.5', 'Altere 7.5kg', 4);
 INSERT INTO GymCompany.Equipamento VALUES ('EA10', 'Altere 10kg', 4);
@@ -288,7 +288,7 @@ INSERT INTO GymCompany.Equipamento VALUES ('EBW', 'Barra W', 2);
 INSERT INTO GymCompany.Equipamento VALUES ('EMR', 'Maquina Remada', 1);
 
 
---GymCompany.Possui
+-- GymCompany.Possui
 INSERT INTO GymCompany.Possui VALUES (124991734, 'EA5');
 INSERT INTO GymCompany.Possui VALUES (124991734, 'EA7.5');
 INSERT INTO GymCompany.Possui VALUES (124991734, 'EA10');
@@ -393,7 +393,7 @@ INSERT INTO GymCompany.Possui VALUES (174753276, 'EBW');
 INSERT INTO GymCompany.Possui VALUES (174753276, 'EMR');
 
 
---GymCompany.Oferece
+-- GymCompany.Oferece
 INSERT INTO GymCompany.Oferece VALUES (124991734, 'SPN-SEG');
 INSERT INTO GymCompany.Oferece VALUES (124991734, 'SPN-SAB');
 INSERT INTO GymCompany.Oferece VALUES (124991734, 'BOX-TER');
@@ -419,7 +419,7 @@ INSERT INTO GymCompany.Oferece VALUES (174753276, 'SDF-SAB');
 INSERT INTO GymCompany.Oferece VALUES (174753276, 'SDF-QUI');
 
 
---GymCompany.AulaInstancia
+-- GymCompany.AulaInstancia
 INSERT INTO GymCompany.AulaInstancia VALUES ('SPN-SEG', 298, 'AISPN1');
 INSERT INTO GymCompany.AulaInstancia VALUES ('SPN-SEG', 276, 'AISPN2');
 INSERT INTO GymCompany.AulaInstancia VALUES ('SPN-QUI', 133, 'AISPN3');
@@ -433,7 +433,7 @@ INSERT INTO GymCompany.AulaInstancia VALUES ('SDF-SAB', 154, 'AISDF1');
 INSERT INTO GymCompany.AulaInstancia VALUES ('SDF-QUI', 133, 'AISDF2');
 
 
---GymCompany.Frequentou
+-- GymCompany.Frequentou
 INSERT INTO GymCompany.Frequentou VALUES (2542, 'AISPN1');
 INSERT INTO GymCompany.Frequentou VALUES (3211, 'AISPN1');
 INSERT INTO GymCompany.Frequentou VALUES (2090, 'AISPN1');
@@ -466,3 +466,10 @@ INSERT INTO GymCompany.Frequentou VALUES (3029, 'AISDF2');
 INSERT INTO GymCompany.Frequentou VALUES (1541, 'AISDF2');
 INSERT INTO GymCompany.Frequentou VALUES (1900, 'AISDF2');
 INSERT INTO GymCompany.Frequentou VALUES (2749, 'AISDF2');
+
+
+-- GymCompany.Login
+INSERT INTO GymCompany.Login VALUES ('admin', 'admin');
+INSERT INTO GymCompany.Login VALUES ('joaopereira', 'joaopereira123');
+INSERT INTO GymCompany.Login VALUES ('joananeves', 'joananeves123');
+INSERT INTO GymCompany.Login VALUES ('pauloferreira', 'pauloferreira123');
