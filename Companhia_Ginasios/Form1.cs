@@ -38,7 +38,7 @@ namespace Companhia_Ginasios
 
                     while (reader.Read())
                     {
-                        Ginasios gym = new Ginasios();
+                        Ginasio gym = new Ginasio();
                         gym.NIF = reader["NIF"].ToString();
                         gym.Telefone = reader["Telefone"].ToString();
                         gym.Morada = reader["Morada"].ToString();
@@ -59,7 +59,7 @@ namespace Companhia_Ginasios
                 CN.Close();
         }
 
-        private void AddGym(string dbServer, string dbName, string userName, string userPass, Ginasios gym)
+        private void AddGym(string dbServer, string dbName, string userName, string userPass, Ginasio gym)
         {
             SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
                                                        "; uid = " + userName + ";" + "password = " + userPass);
@@ -131,7 +131,7 @@ namespace Companhia_Ginasios
 
         private void SaveBttn_Click(object sender, EventArgs e)
         {
-            Ginasios gym = new Ginasios();
+            Ginasio gym = new Ginasio();
             try
             {
                 gym.NIF = txtNIF.Text;

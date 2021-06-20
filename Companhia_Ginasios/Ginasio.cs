@@ -6,14 +6,14 @@ namespace Companhia_Ginasios
 {
 
 	[Serializable()]
-	class Ginasios
+	class Ginasio
     {
         private string nif;
         private string morada;
         private string telefone;
         private string gestor;
 
-		public Ginasios(string nif, string morada, string telefone, string gestor)
+		public Ginasio(string nif, string morada, string telefone, string gestor)
 		{
 			this.nif = nif;
 			this.morada = morada;
@@ -21,7 +21,7 @@ namespace Companhia_Ginasios
 			this.gestor = gestor;
 		}
 
-		public Ginasios()
+		public Ginasio()
 		{
 			
 		}
@@ -33,7 +33,7 @@ namespace Companhia_Ginasios
 			{
 				if (value == null | String.IsNullOrEmpty(value))
 				{
-					throw new Exception("NIF field can’t be empty");
+					throw new Exception("NIF field can't be empty");
 				}
 				nif = value;
 			}
@@ -46,7 +46,7 @@ namespace Companhia_Ginasios
 			{
 				if (value == null | String.IsNullOrEmpty(value))
 				{
-					throw new Exception("Address field can’t be empty");
+					throw new Exception("Address field can't be empty");
 				}
 				morada = value;
 			}
@@ -59,7 +59,7 @@ namespace Companhia_Ginasios
 			{
 				if (value == null | String.IsNullOrEmpty(value))
 				{
-					throw new Exception("Manager field can’t be empty");
+					throw new Exception("Manager field can't be empty");
 				}
 				gestor = value;
 			}
@@ -72,7 +72,7 @@ namespace Companhia_Ginasios
 			{
 				if (value == null | String.IsNullOrEmpty(value))
 				{
-					throw new Exception("Phone Number field can’t be empty");
+					throw new Exception("Phone Number field can't be empty");
 				}
 				telefone = value;
 			}
