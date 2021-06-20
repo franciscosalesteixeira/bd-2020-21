@@ -32,7 +32,10 @@ namespace Companhia_Ginasios
                 if (CN.State == ConnectionState.Open)
                 {
                     db.Logged = true;
-                    SqlCommand sqlcmd = new SqlCommand("SELECT * FROM GymCompany.Ginasio", CN);
+                    SqlCommand sqlcmd = new SqlCommand("SELECT GymCompany.Ginasio.NIF, GymCompany.Ginasio.Telefone, " +
+                        "GymCompany.Ginasio.Morada, GymCompany.Pessoa.Nome " +
+                        "FROM GymCompany.Ginasio " +
+                        "INNER JOIN GymCompany.Pessoa ON GymCompany.Ginasio.Gestor = GymCompany.Pessoa.Numero_CC; ", CN);
                     SqlDataReader reader;
                     reader = sqlcmd.ExecuteReader();
 
@@ -42,7 +45,7 @@ namespace Companhia_Ginasios
                         gym.NIF = reader["NIF"].ToString();
                         gym.Telefone = reader["Telefone"].ToString();
                         gym.Morada = reader["Morada"].ToString();
-                        gym.Gestor = reader["Gestor"].ToString();
+                        gym.Gestor = reader["Nome"].ToString();
                         listBox1.Items.Add("NIF: " + gym.NIF + " Phone number: " + gym.Telefone 
                           + " Address: " + gym.Morada + " Manager: " + gym.Gestor);
                     }

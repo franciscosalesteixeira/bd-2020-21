@@ -1,7 +1,7 @@
 -- GymCompany.Ginasio
-INSERT INTO GymCompany.Ginasio VALUES (124991734, 229866778, 'Rua das Laranjas', 'João Pereira');
-INSERT INTO GymCompany.Ginasio VALUES (143328530, 226542334, 'Rua da Frente', 'Joana Neves');
-INSERT INTO GymCompany.Ginasio VALUES (174753276, 234325549, 'Rua do Vale', 'Paulo Ferreira');
+INSERT INTO GymCompany.Ginasio VALUES (124991734, 229866778, 'Rua das Laranjas', 234552422);
+INSERT INTO GymCompany.Ginasio VALUES (143328530, 226542334, 'Rua da Frente', 263221323);
+INSERT INTO GymCompany.Ginasio VALUES (174753276, 234325549, 'Rua do Vale', 212314321);
 
 
 -- GymCompany.Pessoa
