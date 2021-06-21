@@ -45,6 +45,8 @@ namespace Companhia_Ginasios
             this.txtNIF = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.RemoveBttn = new System.Windows.Forms.Button();
+            this.EditBttn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textNIFdisplay = new System.Windows.Forms.TextBox();
@@ -53,6 +55,8 @@ namespace Companhia_Ginasios
             this.textManagerdisplay = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.CancelBttn = new System.Windows.Forms.Button();
+            this.OkBttn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -179,6 +183,8 @@ namespace Companhia_Ginasios
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.RemoveBttn);
+            this.panel2.Controls.Add(this.EditBttn);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.textNIFdisplay);
@@ -187,10 +193,32 @@ namespace Companhia_Ginasios
             this.panel2.Controls.Add(this.textManagerdisplay);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.CancelBttn);
+            this.panel2.Controls.Add(this.OkBttn);
             this.panel2.Location = new System.Drawing.Point(336, 38);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(461, 394);
             this.panel2.TabIndex = 9;
+            // 
+            // RemoveBttn
+            // 
+            this.RemoveBttn.Location = new System.Drawing.Point(279, 348);
+            this.RemoveBttn.Name = "RemoveBttn";
+            this.RemoveBttn.Size = new System.Drawing.Size(75, 23);
+            this.RemoveBttn.TabIndex = 26;
+            this.RemoveBttn.Text = "Remove";
+            this.RemoveBttn.UseVisualStyleBackColor = true;
+            this.RemoveBttn.Click += new System.EventHandler(this.RemoveBttn_Click);
+            // 
+            // EditBttn
+            // 
+            this.EditBttn.Location = new System.Drawing.Point(106, 348);
+            this.EditBttn.Name = "EditBttn";
+            this.EditBttn.Size = new System.Drawing.Size(75, 23);
+            this.EditBttn.TabIndex = 25;
+            this.EditBttn.Text = "Edit";
+            this.EditBttn.UseVisualStyleBackColor = true;
+            this.EditBttn.Click += new System.EventHandler(this.EditBttn_Click);
             // 
             // label5
             // 
@@ -260,6 +288,26 @@ namespace Companhia_Ginasios
             this.label7.TabIndex = 23;
             this.label7.Text = "Phone Number";
             // 
+            // CancelBttn
+            // 
+            this.CancelBttn.Location = new System.Drawing.Point(106, 348);
+            this.CancelBttn.Name = "CancelBttn";
+            this.CancelBttn.Size = new System.Drawing.Size(75, 23);
+            this.CancelBttn.TabIndex = 28;
+            this.CancelBttn.Text = "Cancel";
+            this.CancelBttn.UseVisualStyleBackColor = true;
+            this.CancelBttn.Click += new System.EventHandler(this.CancelBttn_Click);
+            // 
+            // OkBttn
+            // 
+            this.OkBttn.Location = new System.Drawing.Point(279, 348);
+            this.OkBttn.Name = "OkBttn";
+            this.OkBttn.Size = new System.Drawing.Size(75, 23);
+            this.OkBttn.TabIndex = 27;
+            this.OkBttn.Text = "OK";
+            this.OkBttn.UseVisualStyleBackColor = true;
+            this.OkBttn.Click += new System.EventHandler(this.OkBttn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -303,5 +351,9 @@ namespace Companhia_Ginasios
         private TextBox textManagerdisplay;
         private Label label8;
         private Label label7;
+        private Button EditBttn;
+        private Button RemoveBttn;
+        private Button CancelBttn;
+        private Button OkBttn;
     }
 }

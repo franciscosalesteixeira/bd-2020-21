@@ -306,5 +306,190 @@ namespace Companhia_Ginasios
             if (CN.State == ConnectionState.Open)
                 CN.Close();
         }
+
+        private void EditGym(string dbServer, string dbName, string userName, string userPass, Ginasio gym)
+        {
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
+
+            SqlCommand sqlcmd = new SqlCommand();
+
+            CN.Open();
+            if (CN.State == ConnectionState.Open)
+            {
+                db.Logged = true;
+                sqlcmd.CommandText = "UPDATE GymCompany.Ginasio SET Telefone=@telefone, Morada=@morada, Gestor=@gestor WHERE NIF=@nif";
+                sqlcmd.Parameters.Clear();
+                sqlcmd.Parameters.AddWithValue("@nif", gym.NIF);
+                sqlcmd.Parameters.AddWithValue("@telefone", gym.Telefone);
+                sqlcmd.Parameters.AddWithValue("@morada", gym.Morada);
+                sqlcmd.Parameters.AddWithValue("@gestor", gym.Gestor);
+                sqlcmd.Connection = CN;
+            }
+
+            int rows = 0;
+
+            try
+            {
+                rows = sqlcmd.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to edit gym in database. \n ERROR MESSAGE: \n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+            finally
+            {
+                if (rows == 1)
+                    MessageBox.Show("Info edited");
+                else
+                    MessageBox.Show("Info NOT edited");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
+        private void RemoveGym(string dbServer, string dbName, string userName, string userPass, Ginasio gym)
+        {
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
+
+            SqlCommand sqlcmd = new SqlCommand();
+
+            CN.Open();
+            if (CN.State == ConnectionState.Open)
+            {
+                db.Logged = true;
+                sqlcmd.CommandText = "EXEC GymCompany.RemoveGym @nif";
+                sqlcmd.Parameters.Clear();
+                sqlcmd.Parameters.AddWithValue("@nif", gym.NIF);
+                sqlcmd.Connection = CN;
+            }
+
+            int rows = 0;
+
+            try
+            {
+                rows = sqlcmd.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to remove gym in database. \n ERROR MESSAGE: \n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+            finally
+            {
+                if (rows == 1)
+                    MessageBox.Show("Gym Removed Successfully");
+                else
+                    MessageBox.Show("Remove Gym Failed");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
+        private void EditBttn_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select a contact to edit");
+                return;
+            }
+            ShowEditBttns();
+            listBox1.Enabled = false;
+        }
+
+        public void ShowEditBttns()
+        {
+            OkBttn.Enabled = true;
+            OkBttn.Visible = true;
+            CancelBttn.Enabled = true;
+            CancelBttn.Visible = true;
+            EditBttn.Enabled = false;
+            EditBttn.Visible = false;
+            RemoveBttn.Enabled = false;
+            RemoveBttn.Visible = false;
+        }
+
+        public void HideEditBttns()
+        {
+            OkBttn.Enabled = false;
+            OkBttn.Visible = false;
+            CancelBttn.Enabled = false;
+            CancelBttn.Visible = false;
+            EditBttn.Enabled = true;
+            EditBttn.Visible = true;
+            RemoveBttn.Enabled = true;
+            RemoveBttn.Visible = true;
+        }
+
+        private void OkBttn_Click(object sender, EventArgs e)
+        {
+            HideEditBttns();
+
+            Ginasio gym = new Ginasio();
+            try
+            {
+                gym.NIF = txtNIF.Text;
+                gym.Telefone = txtPhone.Text;
+                gym.Morada = txtAddress.Text;
+                gym.Gestor = txtManager.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            EditGym(db.DbServer, db.DbName, db.UserName, db.UserPass, gym);
+            listBox1.Enabled = true;
+            RefreshListBox();
+            ShowDisplayBttns();
+        }
+
+        private void CancelBttn_Click(object sender, EventArgs e)
+        {
+            HideEditBttns();
+            listBox1.Enabled = true;
+            RefreshListBox();
+            ShowDisplayBttns();
+        }
+
+        private void RemoveBttn_Click(object sender, EventArgs e)
+        {
+            Ginasio gym = new Ginasio();
+
+            if (listBox1.SelectedIndex > -1)
+            {
+                try
+                {
+                    gym.NIF = txtNIF.Text;
+                    RemoveGym(db.DbServer, db.DbName, db.UserName, db.UserPass, gym);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+
+                listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+                
+                if (listBox1.Items.Count == -1)
+                {
+                    ClearFields();
+                    MessageBox.Show("There are no more contacts");
+                }
+                else
+                {
+                    RefreshListBox();
+                    ShowDisplayBttns();
+                }
+            }
+        }
     }
 }
