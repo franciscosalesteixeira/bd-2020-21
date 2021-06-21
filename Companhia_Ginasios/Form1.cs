@@ -150,6 +150,10 @@ namespace Companhia_Ginasios
             txtManager.Text = "";
             txtNIF.Text = "";
             txtPhone.Text = "";
+            textAdressdisplay.Text = "";
+            textManagerdisplay.Text = "";
+            textNIFdisplay.Text = "";
+            textPhonedisplay.Text = "";
         }
 
         public void RefreshListBox()
