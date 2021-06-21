@@ -95,16 +95,6 @@ namespace Companhia_Ginasios
                 CN.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            String table = db.getTableContent(db.DbServer, db.DbName, db.UserName, db.UserPass);
-
-            if (!db.Logged)
-                MessageBox.Show(db.Error, "Operation Failed");
-            else
-                MessageBox.Show(table);
-        }
-
         private void AddBttn_Click(object sender, EventArgs e)
         {
             ClearFields();

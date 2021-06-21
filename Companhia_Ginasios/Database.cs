@@ -59,49 +59,6 @@ namespace Companhia_Ginasios
         {
             get { return this.logged; }
             set { this.logged = value; }
-        }
-
-        public string getTableContent(string dbServer, string dbName, string userName, string userPass)
-        {
-            string str = "";
-
-            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
-                                                        "; uid = " + userName + ";" + "password = " + userPass);
-
-            try
-            {
-                CN.Open();
-                if (CN.State == ConnectionState.Open)
-                {
-                    logged = true;
-                    int cnt = 1;
-                    SqlCommand sqlcmd = new SqlCommand("SELECT * FROM GymCompany.Ginasio", CN);
-                    SqlDataReader reader;
-                    reader = sqlcmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        str += reader.GetInt32(reader.GetOrdinal("NIF")) + ", ";
-                        str += reader.GetInt32(reader.GetOrdinal("Telefone")) + ", ";
-                        str += reader.GetString(reader.GetOrdinal("Morada")) + ", ";
-                        str += reader.GetString(reader.GetOrdinal("Gestor"));
-                        str += "\n";
-                        cnt += 1;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                logged = false;
-                error = "Failed to grab data due to the following error: \r\n" + ex.Message;
-            }
-
-            if (CN.State == ConnectionState.Open)
-                CN.Close();
-                
-            return str;
-        }
-
-       
+        }    
     }
 }
