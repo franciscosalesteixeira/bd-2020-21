@@ -23,6 +23,9 @@ namespace Companhia_Ginasios
         private void DisplayGym(string dbServer, string dbName, string userName, string userPass)
         {
 
+            panel1.Visible = false;
+            panel1.Enabled = false;
+
             SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
                                                         "; uid = " + userName + ";" + "password = " + userPass);
 
@@ -31,23 +34,16 @@ namespace Companhia_Ginasios
                 CN.Open();
                 if (CN.State == ConnectionState.Open)
                 {
+                    string morada = "";
                     db.Logged = true;
-                    SqlCommand sqlcmd = new SqlCommand("SELECT GymCompany.Ginasio.NIF, GymCompany.Ginasio.Telefone, " +
-                        "GymCompany.Ginasio.Morada, GymCompany.Pessoa.Nome " +
-                        "FROM GymCompany.Ginasio " +
-                        "INNER JOIN GymCompany.Pessoa ON GymCompany.Ginasio.Gestor = GymCompany.Pessoa.Numero_CC; ", CN);
+                    SqlCommand sqlcmd = new SqlCommand("SELECT * FROM GymCompany.Ginasio; ", CN);
                     SqlDataReader reader;
                     reader = sqlcmd.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        Ginasio gym = new Ginasio();
-                        gym.NIF = reader["NIF"].ToString();
-                        gym.Telefone = reader["Telefone"].ToString();
-                        gym.Morada = reader["Morada"].ToString();
-                        gym.Gestor = reader["Nome"].ToString();
-                        listBox1.Items.Add("NIF: " + gym.NIF + " Phone number: " + gym.Telefone 
-                          + " Address: " + gym.Morada + " Manager: " + gym.Gestor);
+                        morada = reader["Morada"].ToString();
+                        listBox1.Items.Add(morada);
                     }
                 }
             }
@@ -60,6 +56,7 @@ namespace Companhia_Ginasios
 
             if (CN.State == ConnectionState.Open)
                 CN.Close();
+
         }
 
         private void AddGym(string dbServer, string dbName, string userName, string userPass, Ginasio gym)
@@ -112,24 +109,24 @@ namespace Companhia_Ginasios
         {
             ClearFields();
             ShowAddBttns();
+            HideDisplayBttns();
             listBox1.Visible = false;
             listBox1.Enabled = false;
             panel1.Enabled = true;
             panel1.Visible = true;
-            button1.Visible = false;
-            button1.Enabled = false;
+            
         }
 
         private void ListBttn_Click(object sender, EventArgs e)
         {
             RefreshListBox();
             HideAddBttns();
+            ShowDisplayBttns();
             listBox1.Visible = true;
             listBox1.Enabled = true;
             panel1.Visible = false;
             panel1.Enabled = false;
-            button1.Visible = true;
-            button1.Enabled = true;
+            
         }
 
         private void SaveBttn_Click(object sender, EventArgs e)
@@ -149,12 +146,12 @@ namespace Companhia_Ginasios
 
             AddGym(db.DbServer, db.DbName, db.UserName, db.UserPass, gym);
             RefreshListBox();
+            ShowDisplayBttns();
             listBox1.Visible = true;
             listBox1.Enabled = true;
             panel1.Enabled = false;
             panel1.Visible = false;
-            button1.Visible = true;
-            button1.Enabled = true;
+            
         }
 
         public void ClearFields()
@@ -168,8 +165,54 @@ namespace Companhia_Ginasios
         public void RefreshListBox()
         {
             listBox1.Items.Clear();
+            ShowDisplayBttns();
             DisplayGym(db.DbServer, db.DbName, db.UserName, db.UserPass);
         }
+
+        public void ShowDisplayBttns()
+        {
+            textAdressdisplay.Enabled = true;
+            textAdressdisplay.Visible = true;
+            textPhonedisplay.Enabled = true;
+            textPhonedisplay.Visible = true;
+            textNIFdisplay.Enabled = true;
+            textNIFdisplay.Visible = true;
+            textManagerdisplay.Enabled = true;
+            textManagerdisplay.Visible = true;
+            label5.Enabled = true;
+            label5.Visible = true;
+            label6.Enabled = true;
+            label6.Visible = true;
+            label7.Enabled = true;
+            label7.Visible = true;
+            label8.Enabled = true;
+            label8.Visible = true;
+            panel2.Enabled = true;
+            panel2.Visible = true;
+        }
+
+        public void HideDisplayBttns()
+        {
+            textAdressdisplay.Enabled = false;
+            textAdressdisplay.Visible = false;
+            textPhonedisplay.Enabled = false;
+            textPhonedisplay.Visible = false;
+            textNIFdisplay.Enabled = false;
+            textNIFdisplay.Visible = false;
+            textManagerdisplay.Enabled = false;
+            textManagerdisplay.Visible = false;
+            label5.Enabled = false;
+            label5.Visible = false;
+            label6.Enabled = false;
+            label6.Visible = false;
+            label7.Enabled = false;
+            label7.Visible = false;
+            label8.Enabled = false;
+            label8.Visible = false;
+            panel2.Enabled = false;
+            panel2.Visible = false;
+        }
+
 
         public void HideAddBttns ()
         {
@@ -191,6 +234,7 @@ namespace Companhia_Ginasios
             label4.Visible = false;
             txtManager.Enabled = false;
             txtManager.Visible = false;
+            
         }
 
         public void ShowAddBttns()
@@ -213,6 +257,60 @@ namespace Companhia_Ginasios
             label4.Visible = true;
             txtManager.Enabled = true;
             txtManager.Visible = true;
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex >= 0)
+            {
+                ShowGym(db.DbServer, db.DbName, db.UserName, db.UserPass);
+            }
+        }
+
+        public void ShowGym(string dbServer, string dbName, string userName, string userPass)
+        {
+
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
+
+            String morada = listBox1.Items[listBox1.SelectedIndex].ToString();
+
+            try
+            {
+                CN.Open();
+                if (CN.State == ConnectionState.Open)
+                {
+                    db.Logged = true;
+                    SqlCommand sqlcmd = new SqlCommand("SELECT GymCompany.Ginasio.NIF, GymCompany.Ginasio.Telefone, GymCompany.Ginasio.Morada, GymCompany.Pessoa.Nome " +
+                        "FROM GymCompany.Ginasio " +
+                        "INNER JOIN GymCompany.Pessoa ON GymCompany.Ginasio.Gestor = GymCompany.Pessoa.Numero_CC " +
+                        "WHERE GymCompany.Ginasio.Morada = '" + morada + "';", CN);
+                    SqlDataReader reader;
+                    reader = sqlcmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Ginasio gym = new Ginasio();
+                        gym.NIF = reader["NIF"].ToString();
+                        gym.Telefone = reader["Telefone"].ToString();
+                        gym.Morada = reader["Morada"].ToString();
+                        gym.Gestor = reader["Nome"].ToString();
+                        textAdressdisplay.Text = gym.Morada;
+                        textManagerdisplay.Text = gym.Gestor;
+                        textPhonedisplay.Text = gym.Telefone;
+                        textNIFdisplay.Text = gym.NIF;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to display data due to the following error: \r\n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
         }
     }
 }
