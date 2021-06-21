@@ -95,7 +95,7 @@ namespace Companhia_Ginasios
                 CN.Close();
         }
 
-        private void AddBttn_Click(object sender, EventArgs e)
+        public void AddBttn_Click(object sender, EventArgs e)
         {
             ClearFields();
             ShowAddBttns();
@@ -107,7 +107,7 @@ namespace Companhia_Ginasios
             
         }
 
-        private void ListBttn_Click(object sender, EventArgs e)
+        public void ListBttn_Click(object sender, EventArgs e)
         {
             RefreshListBox();
             HideAddBttns();
@@ -257,7 +257,7 @@ namespace Companhia_Ginasios
             }
         }
 
-        public void ShowGym(string dbServer, string dbName, string userName, string userPass)
+        private void ShowGym(string dbServer, string dbName, string userName, string userPass)
         {
 
             SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
