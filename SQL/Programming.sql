@@ -132,7 +132,7 @@ GO
 
 --Store Procedure para a criar novo inscrito
 GO
-CREATE PROC NewSub @num INT, @aula VARCHAR(30) 
+CREATE PROC GymCompany.NewSub @num INT, @aula VARCHAR(30) 
 AS
 BEGIN
 	IF NOT EXISTS (SELECT Numero_Cliente FROM GymCompany.Cliente WHERE Numero_Cliente=@num)
@@ -154,7 +154,7 @@ GO
 
 --Store procedure para colocar professor a lecionar uma aula
 GO
-CREATE PROC NewProf @numProf INT, @aula VARCHAR(30) 
+CREATE PROC GymCompany.NewProf @numProf INT, @aula VARCHAR(30) 
 AS
 BEGIN
 	IF NOT EXISTS (SELECT Numero_Funcionario FROM GymCompany.Funcionario WHERE Numero_Funcionario=@numProf)
