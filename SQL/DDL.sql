@@ -5,7 +5,7 @@ CREATE TABLE GymCompany.Ginasio (
 	NIF			INT				NOT NULL,
 	Telefone	INT				NOT NULL,
 	Morada		VARCHAR(50)		NOT NULL,	
-	Gestor		VARCHAR(30)		NOT NULL,
+	Gestor		INT		NOT NULL,
 	PRIMARY KEY (NIF),
 	UNIQUE (Telefone)
 );
@@ -133,6 +133,9 @@ CREATE TABLE GymCompany.Login (
 	Pass			VARCHAR(30)		NOT NULL,
 	PRIMARY KEY (Username)
 );
+
+ALTER TABLE GymCompany.Ginasio
+	ADD FOREIGN KEY (Gestor) REFERENCES GymCompany.Funcionario(Numero_CC);
 
 ALTER TABLE GymCompany.Funcionario
 	ADD FOREIGN KEY (Numero_CC) REFERENCES GymCompany.Pessoa(Numero_CC);

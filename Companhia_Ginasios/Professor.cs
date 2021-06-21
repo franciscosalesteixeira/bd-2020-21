@@ -32,4 +32,5 @@ namespace Companhia_Ginasios
 				numero_funcionario = value;
 			}
 		}
+	}
 }
