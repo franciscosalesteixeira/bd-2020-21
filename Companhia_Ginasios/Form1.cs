@@ -25,6 +25,7 @@ namespace Companhia_Ginasios
 
             panel1.Visible = false;
             panel1.Enabled = false;
+            HidePanelPerson();
 
             SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
                                                         "; uid = " + userName + ";" + "password = " + userPass);
@@ -83,11 +84,11 @@ namespace Companhia_Ginasios
             {
                 sqlcmd.ExecuteNonQuery();
             }
-            
+
             catch (Exception ex)
             {
                 db.Logged = false;
-                db.Error = "Failed to add gym in database. \n ERROR MESSAGE: \n" + ex.Message;
+                db.Error = "Failed to add gym to the database. \n ERROR MESSAGE: \n" + ex.Message;
                 MessageBox.Show(db.Error, "An Error Occurred");
             }
 
@@ -104,19 +105,20 @@ namespace Companhia_Ginasios
             listBox1.Enabled = false;
             panel1.Enabled = true;
             panel1.Visible = true;
-            
+
         }
 
         public void ListBttn_Click(object sender, EventArgs e)
         {
             RefreshListBox();
             HideAddBttns();
+            HidePanelPerson();
             ShowDisplayBttns();
             listBox1.Visible = true;
             listBox1.Enabled = true;
             panel1.Visible = false;
             panel1.Enabled = false;
-            
+
         }
 
         private void SaveBttn_Click(object sender, EventArgs e)
@@ -141,7 +143,7 @@ namespace Companhia_Ginasios
             listBox1.Enabled = true;
             panel1.Enabled = false;
             panel1.Visible = false;
-            
+
         }
 
         public void ClearFields()
@@ -183,6 +185,20 @@ namespace Companhia_Ginasios
             label8.Visible = true;
             panel2.Enabled = true;
             panel2.Visible = true;
+
+        }
+
+        public void ShowPanelPerson()
+        {
+            panel1.Enabled = false;
+            panel1.Visible = false;
+            panel3.Enabled = true;
+            panel3.Visible = true;
+        }
+        public void HidePanelPerson()
+        {
+            panel3.Enabled = false;
+            panel3.Visible = false;
         }
 
         public void HideDisplayBttns()
@@ -208,7 +224,7 @@ namespace Companhia_Ginasios
         }
 
 
-        public void HideAddBttns ()
+        public void HideAddBttns()
         {
             SaveBttn.Enabled = false;
             SaveBttn.Visible = false;
@@ -228,7 +244,7 @@ namespace Companhia_Ginasios
             label4.Visible = false;
             txtManager.Enabled = false;
             txtManager.Visible = false;
-            
+
         }
 
         public void ShowAddBttns()
@@ -433,6 +449,127 @@ namespace Companhia_Ginasios
             RemoveBttn.Visible = true;
         }
 
+        public void HideEmployeeBttns()
+        {
+            labelIdEmp.Enabled = false;
+            labelIdEmp.Visible = false;
+            labelEnEmp.Enabled = false;
+            labelEnEmp.Visible = false;
+            labelJobEmp.Enabled = false;
+            labelJobEmp.Visible = false;
+            labelSalEmp.Enabled = false;
+            labelSalEmp.Visible = false;
+            labelIdEmp.Enabled = false;
+            txtIdEmp.Visible = false;
+            txtEnEmp.Enabled = false;
+            txtEnEmp.Visible = false;
+            txtJobEmp.Enabled = false;
+            txtJobEmp.Visible = false;
+            txtSalEmp.Enabled = false;
+            txtSalEmp.Visible = false;
+
+        }
+
+        public void AddEmployeeBttns()
+        {
+            labelIdEmp.Enabled = true;
+            labelIdEmp.Visible = true;
+            labelEnEmp.Enabled = true;
+            labelEnEmp.Visible = true;
+            labelJobEmp.Enabled = true;
+            labelJobEmp.Visible = true;
+            labelSalEmp.Enabled = true;
+            labelSalEmp.Visible = true;
+            labelIdEmp.Enabled = true;
+            txtIdEmp.Visible = true;
+            txtEnEmp.Enabled = true;
+            txtEnEmp.Visible = true;
+            txtJobEmp.Enabled = true;
+            txtJobEmp.Visible = true;
+            txtSalEmp.Enabled = true;
+            txtSalEmp.Visible = true;
+
+        }
+
+        public void HideClientBttns()
+        {
+            labelIdClt.Enabled = false;
+            labelIdClt.Visible = false;
+            labelCnClt.Enabled = false;
+            labelCnClt.Visible = false;
+            labelSubClt.Enabled = false;
+            labelSubClt.Visible = false;
+            txtIdClt.Visible = false;
+            txtIdClt.Enabled = false;
+            txtCnClt.Visible = false;
+            txtSubClt.Enabled = false;
+            txtSubClt.Visible = false;
+
+        }
+
+        public void AddClientBttns()
+        {
+            labelIdClt.Enabled = true;
+            labelIdClt.Visible = true;
+            labelCnClt.Enabled = true;
+            labelCnClt.Visible = true;
+            labelSubClt.Enabled = true;
+            labelSubClt.Visible = true;
+            txtIdClt.Visible = true;
+            txtIdClt.Enabled = true;
+            txtCnClt.Visible = true;
+            txtSubClt.Enabled = true;
+            txtSubClt.Visible = true;
+
+        }
+
+        public void HidePersonBttns()
+        {
+            labelPhonePerson.Visible = false;
+            labelPhonePerson.Enabled = false;
+            labelEmailPerson.Visible = false;
+            labelEmailPerson.Enabled = false;
+            labelAddPerson.Visible = false;
+            labelAddPerson.Enabled = false;
+            labelIdPerson.Enabled = false;
+            labelIdPerson.Visible = false;
+            labelNamePerson.Enabled = false;
+            labelNamePerson.Enabled = false;
+            txtPersonId.Visible = false;
+            txtPersonId.Enabled = false;
+            txtPersonPhone.Enabled = false;
+            txtPersonPhone.Visible = false;
+            txtPersonAdd.Enabled = false;
+            txtPersonAdd.Visible = false;
+            txtPersonEmail.Enabled = false;
+            txtPersonEmail.Visible = false;
+            txtPersonName.Enabled = false;
+            txtPersonName.Visible = false;
+
+        }
+
+        public void AddPersonBttns()
+        {
+            labelPhonePerson.Visible = true;
+            labelPhonePerson.Enabled = true;
+            labelEmailPerson.Visible = true;
+            labelEmailPerson.Enabled = true;
+            labelAddPerson.Visible = true;
+            labelAddPerson.Enabled = true;
+            labelIdPerson.Enabled = true;
+            labelIdPerson.Visible = true;
+            labelNamePerson.Enabled = true;
+            labelNamePerson.Enabled = true;
+            txtPersonId.Visible = true;
+            txtPersonId.Enabled = true;
+            txtPersonPhone.Enabled = true;
+            txtPersonPhone.Visible = true;
+            txtPersonAdd.Enabled = true;
+            txtPersonAdd.Visible = true;
+            txtPersonEmail.Enabled = true;
+            txtPersonEmail.Visible = true;
+        }
+
         private void OkBttn_Click(object sender, EventArgs e)
         {
             HideEditBttns();
@@ -440,17 +577,18 @@ namespace Companhia_Ginasios
             Ginasio gym = new Ginasio();
             try
             {
-                gym.NIF = txtNIF.Text;
-                gym.Telefone = txtPhone.Text;
-                gym.Morada = txtAddress.Text;
-                gym.Gestor = txtManager.Text;
+                gym.NIF = textNIFdisplay.Text;
+                gym.Telefone = textPhonedisplay.Text;
+                gym.Morada = textAdressdisplay.Text;
+                gym.Gestor = textManagerdisplay.Text;
+
+                EditGym(db.DbServer, db.DbName, db.UserName, db.UserPass, gym);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
-            EditGym(db.DbServer, db.DbName, db.UserName, db.UserPass, gym);
             textNIFdisplay.ReadOnly = true;
             textPhonedisplay.ReadOnly = true;
             textManagerdisplay.ReadOnly = true;
@@ -480,7 +618,7 @@ namespace Companhia_Ginasios
             {
                 try
                 {
-                    gym.NIF = txtNIF.Text;
+                    gym.NIF = textNIFdisplay.Text;
                     RemoveGym(db.DbServer, db.DbName, db.UserName, db.UserPass, gym);
                 }
                 catch (Exception ex)
@@ -490,7 +628,7 @@ namespace Companhia_Ginasios
                 }
 
                 listBox1.Items.RemoveAt(listBox1.SelectedIndex);
-                
+
                 if (listBox1.Items.Count == -1)
                 {
                     ClearFields();
@@ -502,6 +640,210 @@ namespace Companhia_Ginasios
                     ShowDisplayBttns();
                 }
             }
+        }
+
+        private void checkBox2_CheckStateChanged(object sender, EventArgs e)
+        {
+            HideEmployeeBttns();
+            HidePersonBttns();
+            AddClientBttns();
+
+            checkBox1.Checked = false;
+            checkBox3.Checked = false;
+
+        }
+
+        private void checkBox1_CheckStateChanged(object sender, EventArgs e)
+        {
+            HideClientBttns();
+            HidePersonBttns();
+            AddEmployeeBttns();
+
+            checkBox3.Checked = false;
+            checkBox2.Checked = false;
+
+        }
+
+        private void checkBox3_CheckStateChanged(object sender, EventArgs e)
+        {
+            HideClientBttns();
+            HideEmployeeBttns();
+            AddPersonBttns();
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+
+        }
+
+        private void AddPersonDb(string dbServer, string dbName, string userName, string userPass, Pessoa person)
+        {
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
+
+            SqlCommand sqlcmd = new SqlCommand();
+
+            CN.Open();
+            if (CN.State == ConnectionState.Open)
+            {
+                db.Logged = true;
+                sqlcmd.CommandText = "INSERT INTO GymCompany.Pessoa(Numero_CC, Nome, Telefone, Morada, Email) VALUES(@numero_cc, @nome, @telefone, @morada, @email)";
+                sqlcmd.Parameters.Clear();
+                sqlcmd.Parameters.AddWithValue("@numero_cc", person.Numero_CC);
+                sqlcmd.Parameters.AddWithValue("@nome", person.Nome);
+                sqlcmd.Parameters.AddWithValue("@telefone", person.Telefone);
+                sqlcmd.Parameters.AddWithValue("@morada", person.Morada);
+                sqlcmd.Parameters.AddWithValue("@email", person.Email);
+                sqlcmd.Connection = CN;
+            }
+
+            try
+            {
+                sqlcmd.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to add Person to the database. \n ERROR MESSAGE: \n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
+        private void AddEmployeeDb(string dbServer, string dbName, string userName, string userPass, Funcionario func)
+        {
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
+
+            SqlCommand sqlcmd = new SqlCommand();
+
+            CN.Open();
+            if (CN.State == ConnectionState.Open)
+            {
+                db.Logged = true;
+                sqlcmd.CommandText = "INSERT INTO GymCompany.Funcionario(Numero_CC, Numero_Funcionario, Funcao, Salario) VALUES(@numero_cc, @numero_funcionario, @funcao, @salario)";
+                sqlcmd.Parameters.Clear();
+                sqlcmd.Parameters.AddWithValue("@numero_cc", func.Numero_CC);
+                sqlcmd.Parameters.AddWithValue("@numero_funcionario", func.Numero_Funcionario);
+                sqlcmd.Parameters.AddWithValue("@funcao", func.Funcao);
+                sqlcmd.Parameters.AddWithValue("@salario", func.Salario);
+                sqlcmd.Connection = CN;
+            }
+
+            try
+            {
+                sqlcmd.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to add Employee to the database. \n ERROR MESSAGE: \n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
+        private void AddClientDb(string dbServer, string dbName, string userName, string userPass, Cliente cliente)
+        {
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
+
+            SqlCommand sqlcmd = new SqlCommand();
+
+            CN.Open();
+            if (CN.State == ConnectionState.Open)
+            {
+                db.Logged = true;
+                sqlcmd.CommandText = "INSERT INTO GymCompany.Cliente(Numero_CC, Numero_Cliente, Tipo_Subscricao) VALUES(@numero_cc, @numero_cliente, @tipo_subscricao)";
+                sqlcmd.Parameters.Clear();
+                sqlcmd.Parameters.AddWithValue("@numero_cc", cliente.Numero_CC);
+                sqlcmd.Parameters.AddWithValue("@numero_cliente", cliente.Numero_Cliente);
+                sqlcmd.Parameters.AddWithValue("@tipo_subscricao", cliente.Tipo_Subscricao);
+                sqlcmd.Connection = CN;
+            }
+
+            try
+            {
+                sqlcmd.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to add Client to the database. \n ERROR MESSAGE: \n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
+        private void SavePerson_Click(object sender, EventArgs e)
+        {
+
+            Pessoa person = new Pessoa();
+            Funcionario func = new Funcionario();
+            Cliente client = new Cliente();
+
+            try
+            {
+                if (checkBox3.Checked)
+                {
+                    person.Numero_CC = txtPersonId.Text;
+                    person.Nome = txtPersonName.Text;
+                    person.Telefone = txtPersonPhone.Text;
+                    person.Morada = txtPersonAdd.Text;
+                    person.Email = txtPersonEmail.Text;
+                    MessageBox.Show("Operation Successful");
+
+                    AddPersonDb(db.DbServer, db.DbName, db.UserName, db.UserPass, person);
+                }
+
+                if (checkBox1.Checked)
+                {
+                    func.Numero_CC = txtIdEmp.Text;
+                    func.Numero_Funcionario = txtEnEmp.Text;
+                    func.Funcao = txtJobEmp.Text;
+                    func.Salario = txtSalEmp.Text;
+
+                    AddEmployeeDb(db.DbServer, db.DbName, db.UserName, db.UserPass, func);
+                    MessageBox.Show("Operation Successful");
+                }
+
+                if (checkBox2.Checked)
+                {
+                    client.Numero_CC = txtIdClt.Text;
+                    client.Numero_Cliente = txtCnClt.Text;
+                    client.Tipo_Subscricao = txtSubClt.Text;
+
+                    AddClientDb(db.DbServer, db.DbName, db.UserName, db.UserPass, client);
+                    MessageBox.Show("Operation Successful");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                if (func.Numero_CC != person.Numero_CC)
+                    db.Error = "ID Numbers must be equal";
+                MessageBox.Show(db.Error + "\n" + ex.Message, "An Error Occurred");
+            }
+
+        }
+
+        private void AddPerson_Click_1(object sender, EventArgs e)
+        {
+            checkBox3.Checked = true;
+            ClearFields();
+            HideDisplayBttns();
+            listBox1.Visible = false;
+            listBox1.Enabled = false;
+            ShowPanelPerson();
+            HideClientBttns();
+            HideEmployeeBttns();
         }
     }
 }
