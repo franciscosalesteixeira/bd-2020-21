@@ -534,7 +534,7 @@ namespace Companhia_Ginasios
             labelIdPerson.Enabled = false;
             labelIdPerson.Visible = false;
             labelNamePerson.Enabled = false;
-            labelNamePerson.Enabled = false;
+            labelNamePerson.Visible = false;
             txtPersonId.Visible = false;
             txtPersonId.Enabled = false;
             txtPersonPhone.Enabled = false;
@@ -559,7 +559,7 @@ namespace Companhia_Ginasios
             labelIdPerson.Enabled = true;
             labelIdPerson.Visible = true;
             labelNamePerson.Enabled = true;
-            labelNamePerson.Enabled = true;
+            labelNamePerson.Visible = true;
             txtPersonId.Visible = true;
             txtPersonId.Enabled = true;
             txtPersonPhone.Enabled = true;
@@ -568,6 +568,38 @@ namespace Companhia_Ginasios
             txtPersonAdd.Visible = true;
             txtPersonEmail.Enabled = true;
             txtPersonEmail.Visible = true;
+            txtPersonName.Enabled = true;
+            txtPersonName.Visible = true;
+        }
+
+        public void ClearPersonBttns()
+        {
+
+            txtPersonId.Text = "";
+            txtPersonPhone.Text = "";
+            txtPersonAdd.Text = "";
+            txtPersonEmail.Text = "";
+            txtPersonName.Text = "";
+
+        }
+
+        public void ClearClientBttns()
+        {
+
+            txtIdClt.Text = "";
+            txtCnClt.Text = "";
+            txtSubClt.Text = "";
+
+        }
+
+        public void ClearEmployeeBttns()
+        {
+
+            txtIdEmp.Text = "";
+            txtEnEmp.Text = "";
+            txtJobEmp.Text = "";
+            txtSalEmp.Text = "";
+
         }
 
         private void OkBttn_Click(object sender, EventArgs e)
@@ -644,34 +676,44 @@ namespace Companhia_Ginasios
 
         private void checkBox2_CheckStateChanged(object sender, EventArgs e)
         {
-            HideEmployeeBttns();
-            HidePersonBttns();
-            AddClientBttns();
 
-            checkBox1.Checked = false;
-            checkBox3.Checked = false;
+            if (checkBox2.Checked)
+            {
+                HideEmployeeBttns();
+                HidePersonBttns();
+                AddClientBttns();
 
+                checkBox1.Checked = false;
+                checkBox3.Checked = false;
+            }
         }
 
         private void checkBox1_CheckStateChanged(object sender, EventArgs e)
         {
-            HideClientBttns();
-            HidePersonBttns();
-            AddEmployeeBttns();
 
-            checkBox3.Checked = false;
-            checkBox2.Checked = false;
+            if (checkBox1.Checked)
+            {
+                HideClientBttns();
+                HidePersonBttns();
+                AddEmployeeBttns();
 
+                checkBox3.Checked = false;
+                checkBox2.Checked = false;
+            }
         }
 
         private void checkBox3_CheckStateChanged(object sender, EventArgs e)
         {
-            HideClientBttns();
-            HideEmployeeBttns();
-            AddPersonBttns();
-            checkBox1.Checked = false;
-            checkBox2.Checked = false;
 
+            if (checkBox3.Checked)
+            {
+                HideClientBttns();
+                HideEmployeeBttns();
+                AddPersonBttns();
+
+                checkBox1.Checked = false;
+                checkBox2.Checked = false;
+            }
         }
 
         private void AddPersonDb(string dbServer, string dbName, string userName, string userPass, Pessoa person)
@@ -798,9 +840,10 @@ namespace Companhia_Ginasios
                     person.Telefone = txtPersonPhone.Text;
                     person.Morada = txtPersonAdd.Text;
                     person.Email = txtPersonEmail.Text;
-                    MessageBox.Show("Operation Successful");
 
                     AddPersonDb(db.DbServer, db.DbName, db.UserName, db.UserPass, person);
+                    ClearPersonBttns();
+                    
                 }
 
                 if (checkBox1.Checked)
@@ -811,7 +854,7 @@ namespace Companhia_Ginasios
                     func.Salario = txtSalEmp.Text;
 
                     AddEmployeeDb(db.DbServer, db.DbName, db.UserName, db.UserPass, func);
-                    MessageBox.Show("Operation Successful");
+                    ClearEmployeeBttns();
                 }
 
                 if (checkBox2.Checked)
@@ -821,7 +864,7 @@ namespace Companhia_Ginasios
                     client.Tipo_Subscricao = txtSubClt.Text;
 
                     AddClientDb(db.DbServer, db.DbName, db.UserName, db.UserPass, client);
-                    MessageBox.Show("Operation Successful");
+                    ClearClientBttns();
                 }
 
             }
