@@ -401,6 +401,10 @@ namespace Companhia_Ginasios
                 MessageBox.Show("Please select a contact to edit");
                 return;
             }
+            textNIFdisplay.ReadOnly = false;
+            textPhonedisplay.ReadOnly = false;
+            textManagerdisplay.ReadOnly = false;
+            textAdressdisplay.ReadOnly = false;
             ShowEditBttns();
             listBox1.Enabled = false;
         }
@@ -447,6 +451,10 @@ namespace Companhia_Ginasios
             }
 
             EditGym(db.DbServer, db.DbName, db.UserName, db.UserPass, gym);
+            textNIFdisplay.ReadOnly = true;
+            textPhonedisplay.ReadOnly = true;
+            textManagerdisplay.ReadOnly = true;
+            textAdressdisplay.ReadOnly = true;
             listBox1.Enabled = true;
             RefreshListBox();
             ShowDisplayBttns();
@@ -455,6 +463,10 @@ namespace Companhia_Ginasios
         private void CancelBttn_Click(object sender, EventArgs e)
         {
             HideEditBttns();
+            textNIFdisplay.ReadOnly = true;
+            textPhonedisplay.ReadOnly = true;
+            textManagerdisplay.ReadOnly = true;
+            textAdressdisplay.ReadOnly = true;
             listBox1.Enabled = true;
             RefreshListBox();
             ShowDisplayBttns();
@@ -482,7 +494,7 @@ namespace Companhia_Ginasios
                 if (listBox1.Items.Count == -1)
                 {
                     ClearFields();
-                    MessageBox.Show("There are no more contacts");
+                    MessageBox.Show("There are no more gyms");
                 }
                 else
                 {
