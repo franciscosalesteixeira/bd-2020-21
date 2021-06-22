@@ -320,3 +320,132 @@ BEGIN
 	END
 END
 GO
+
+
+--Store Procedure para remover cliente: tem de eliminar este cliente da tabela Tem_Clientes
+--e se for aluno remover da tabela Inscrito e Aluno
+GO
+CREATE PROC GymCompany.RemoveClient @num INT
+AS
+BEGIN
+	IF EXISTS (SELECT Numero_Cliente FROM GymCompany.Aluno WHERE Numero_Cliente=@num) --verificar se é aluno
+	BEGIN
+		DELETE FROM GymCompany.Inscrito
+		WHERE Numero_Aluno = @num;
+
+		DELETE FROM GymCompany.Aluno
+		WHERE Numero_Cliente = @num;
+	END
+
+	DELETE FROM GymCompany.Tem_Clientes
+	WHERE Numero_Cliente = @num;
+
+	DELETE FROM GymCompany.Cliente
+	WHERE Numero_Cliente = @num;
+END
+GO
+
+
+--Store Procedure para remover funcionario: tem de eliminar este funcionario da tabela Tem_Funcionarios
+--e se for professor remover da tabela Leciona e Professor
+GO
+CREATE PROC GymCompany.RemoveEmployee @num INT
+AS
+BEGIN
+	IF EXISTS (SELECT Numero_Funcionario FROM GymCompany.Professor WHERE Numero_Funcionario=@num) --verificar se é professor
+	BEGIN
+		DELETE FROM GymCompany.Leciona
+		WHERE Numero_Professor = @num;
+
+		DELETE FROM GymCompany.Professor
+		WHERE Numero_Funcionario = @num;
+	END
+
+	DELETE FROM GymCompany.Tem_Funcionarios
+	WHERE Numero_Funcionario = @num;
+
+	DELETE FROM GymCompany.Funcionario
+	WHERE Numero_Funcionario = @num;
+END
+GO
+
+
+--Store Procedure para remover pessoa: tem de verificar se é funcionario ou cliente.
+--Se for funcionario chama o RemoveEmployee
+--Se for cliente chama o RemoveClient
+--Por fim eliminar a Pessoa
+GO
+CREATE PROC GymCompany.RemovePerson @cc INT
+AS
+BEGIN
+	DECLARE @num AS INT;
+
+	IF EXISTS (SELECT Numero_Cliente FROM GymCompany.Cliente WHERE Numero_CC=@cc) --verificar se é cliente
+	BEGIN
+		SELECT @num=Numero_Cliente FROM GymCompany.Cliente WHERE Numero_CC=@cc
+		
+		EXEC GymCompany.RemoveClient @num;
+	END
+
+	IF EXISTS (SELECT Numero_Funcionario FROM GymCompany.Funcionario WHERE Numero_CC=@cc) --verificar se é funcionario
+	BEGIN
+		SELECT @num=Numero_Funcionario FROM GymCompany.Funcionario WHERE Numero_CC=@cc
+		
+		EXEC GymCompany.RemoveEmployee @num;
+	END
+
+	DELETE FROM GymCompany.Pessoa
+	WHERE Numero_CC = @cc;
+END
+GO
+
+
+--Store Procedure para remover produto: tem de eliminar este produto da tabelas:
+--Vende e Produto
+GO
+CREATE PROC GymCompany.RemoveProduct @cod INT
+AS
+BEGIN
+	DELETE FROM GymCompany.Vende
+	WHERE Codigo=@cod
+
+	DELETE FROM GymCompany.Produto
+	WHERE Codigo=@cod
+END
+GO
+
+
+--Store Procedure para remover equipamento: tem de eliminar este equipamento das tabelas:
+--Possui e Equipamento
+GO
+CREATE PROC GymCompany.RemoveEquipment @desig INT
+AS
+BEGIN
+	DELETE FROM GymCompany.Possui
+	WHERE Designacao=@desig
+
+	DELETE FROM GymCompany.Equipamento
+	WHERE Designacao=@desig
+END
+GO
+
+
+--Store Procedure para remover aula: tem de eliminar esta aula da tabelas: 
+--Oferece, Inscrito, Leciona e Aula
+GO
+CREATE PROC GymCompany.RemoveCourse @desig INT
+AS
+BEGIN
+	DELETE FROM GymCompany.Oferece
+	WHERE Designacao=@desig
+
+	DELETE FROM GymCompany.Inscrito
+	WHERE Designacao_Aula=@desig
+
+	DELETE FROM GymCompany.Leciona
+	WHERE Designacao_Aula=@desig
+
+	DELETE FROM GymCompany.Aula
+	WHERE Designacao=@desig
+END
+GO
