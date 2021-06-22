@@ -870,8 +870,6 @@ namespace Companhia_Ginasios
             }
             catch (Exception ex)
             {
-                if (func.Numero_CC != person.Numero_CC)
-                    db.Error = "ID Numbers must be equal";
                 MessageBox.Show(db.Error + "\n" + ex.Message, "An Error Occurred");
             }
 
