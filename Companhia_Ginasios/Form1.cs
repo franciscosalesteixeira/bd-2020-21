@@ -641,6 +641,258 @@ namespace Companhia_Ginasios
 
         }
 
+        private void AddEquip(string dbServer, string dbName, string userName, string userPass, Equipamento equip, Possui pos)
+        {
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
+
+            SqlCommand sqlcmd = new SqlCommand();
+            SqlCommand sqlcmd2 = new SqlCommand();
+
+            CN.Open();
+            if (CN.State == ConnectionState.Open)
+            {
+                db.Logged = true;
+                sqlcmd.CommandText = "INSERT INTO GymCompany.Equipamento(Designacao, Tipo_Equipamento, Quantidade) VALUES(@designacao, @tipo_equipamento, @quantidade)";
+                sqlcmd2.CommandText = "INSERT INTO GymCompany.Possui(NIF, Designacao) VALUES(@nif, @designacao)";
+                sqlcmd.Parameters.Clear();
+                sqlcmd2.Parameters.Clear();
+                sqlcmd.Parameters.AddWithValue("@designcao", equip.Designacao);
+                sqlcmd.Parameters.AddWithValue("@tipo_equipamento", equip.Quantidade);
+                sqlcmd.Parameters.AddWithValue("@quantidade", equip.Tipo_Equipamento);
+                sqlcmd.Connection = CN;
+                sqlcmd2.Parameters.AddWithValue("@nif", pos.NIF);
+                sqlcmd2.Parameters.AddWithValue("@designacao", pos.Designacao);
+                sqlcmd2.Connection = CN;
+            }
+
+            try
+            {
+                sqlcmd.ExecuteNonQuery();
+                sqlcmd2.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to add Equipment to the database. \n ERROR MESSAGE: \n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
+        private void AddEquip(string dbServer, string dbName, string userName, string userPass, Produto prod, Vende ven)
+        {
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
+
+            SqlCommand sqlcmd = new SqlCommand();
+            SqlCommand sqlcmd2 = new SqlCommand();
+
+            CN.Open();
+            if (CN.State == ConnectionState.Open)
+            {
+                db.Logged = true;
+                sqlcmd.CommandText = "INSERT INTO GymCompany.Produto(Codigo, Nome, Preco, Stock) VALUES(@codigo, @nome, @preco, @stock)";
+                sqlcmd2.CommandText = "INSERT INTO GymCompany.Vende(NIF, Codigo) VALUES(@nif, @codigo)";
+                sqlcmd.Parameters.Clear();
+                sqlcmd2.Parameters.Clear();
+                sqlcmd.Parameters.AddWithValue("@codigo", prod.Codigo);
+                sqlcmd.Parameters.AddWithValue("@nome", prod.Nome);
+                sqlcmd.Parameters.AddWithValue("@preco", prod.Preco);
+                sqlcmd.Parameters.AddWithValue("@stock", prod.Stock);
+                sqlcmd.Connection = CN;
+                sqlcmd2.Parameters.AddWithValue("@nif", ven.NIF);
+                sqlcmd2.Parameters.AddWithValue("@codigo", ven.Codigo);
+                sqlcmd2.Connection = CN;
+            }
+
+            try
+            {
+                sqlcmd.ExecuteNonQuery();
+                sqlcmd2.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to add Product to the database. \n ERROR MESSAGE: \n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
+        private void AddClass(string dbServer, string dbName, string userName, string userPass, Aula aula, Oferece ofc)
+        {
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
+
+            SqlCommand sqlcmd = new SqlCommand();
+            SqlCommand sqlcmd2 = new SqlCommand();
+
+            CN.Open();
+            if (CN.State == ConnectionState.Open)
+            {
+                db.Logged = true;
+                sqlcmd.CommandText = "INSERT INTO GymCompany.Aula(Designacao, Tipo_Aula, Hora, Dias_Semana, Nr_Max_Alunos) VALUES(@designacao, @tipo_aula, @hora, @dias_semana, @nr_max_alunos)";
+                sqlcmd2.CommandText = "INSERT INTO GymCompany.Oferece(NIF, Designacao) VALUES(@nif, @designacao)";
+                sqlcmd.Parameters.Clear();
+                sqlcmd2.Parameters.Clear();
+                sqlcmd.Parameters.AddWithValue("@designacao", aula.Designacao);
+                sqlcmd.Parameters.AddWithValue("@tipo_aula", aula.Tipo_Aula);
+                sqlcmd.Parameters.AddWithValue("@hora", aula.Hora);
+                sqlcmd.Parameters.AddWithValue("@dias_semana", aula.Dias_Semana);
+                sqlcmd.Parameters.AddWithValue("@nr_max_alunos", aula.Nr_Max_Alunos);
+                sqlcmd.Connection = CN;
+                sqlcmd2.Parameters.AddWithValue("@nif", ofc.NIF);
+                sqlcmd2.Parameters.AddWithValue("@designacao", ofc.Designacao);
+                sqlcmd2.Connection = CN;
+            }
+
+            try
+            {
+                sqlcmd.ExecuteNonQuery();
+                sqlcmd2.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to add Course to the database. \n ERROR MESSAGE: \n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
+        private void AddTeach(string dbServer, string dbName, string userName, string userPass, Professor prof)
+        {
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
+
+            SqlCommand sqlcmd = new SqlCommand();
+            SqlCommand sqlcmd2 = new SqlCommand();
+
+            CN.Open();
+            if (CN.State == ConnectionState.Open)
+            {
+                db.Logged = true;
+                sqlcmd.CommandText = "INSERT INTO GymCompany.Professor(Numero_Funcionario) VALUES(@numero_funcionario)";
+                //sqlcmd2.CommandText = "EXEC GymCompany.RemoveGym @nif";
+                sqlcmd.Parameters.Clear();
+                //sqlcmd2.Parameters.Clear();
+                sqlcmd.Parameters.AddWithValue("@Numero_Funcionario", prof.Numero_Funcionario);
+                sqlcmd.Connection = CN;
+                //sqlcmd2.Parameters.AddWithValue("@nif", ofc.NIF);
+                //sqlcmd2.Parameters.AddWithValue("@designacao", ofc.Designacao);
+                //sqlcmd2.Connection = CN;
+            }
+
+            try
+            {
+                sqlcmd.ExecuteNonQuery();
+                //sqlcmd2.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to add Teacher to the database. \n ERROR MESSAGE: \n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
+        private void AddStu(string dbServer, string dbName, string userName, string userPass, Aluno stu)
+        {
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
+
+            SqlCommand sqlcmd = new SqlCommand();
+            SqlCommand sqlcmd2 = new SqlCommand();
+
+            CN.Open();
+            if (CN.State == ConnectionState.Open)
+            {
+                db.Logged = true;
+                sqlcmd.CommandText = "INSERT INTO GymCompany.Aluno(Numero_Cliente) VALUES(@numero_cliente)";
+                //sqlcmd2.CommandText = "EXEC GymCompany.RemoveGym @nif";
+                sqlcmd.Parameters.Clear();
+                //sqlcmd2.Parameters.Clear();
+                sqlcmd.Parameters.AddWithValue("@numero_cliente", stu.Numero_Cliente);
+                sqlcmd.Connection = CN;
+                //sqlcmd2.Parameters.AddWithValue("@nif", ofc.NIF);
+                //sqlcmd2.Parameters.AddWithValue("@designacao", ofc.Designacao);
+                //sqlcmd2.Connection = CN;
+            }
+
+            try
+            {
+                sqlcmd.ExecuteNonQuery();
+                //sqlcmd2.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to add Student to the database. \n ERROR MESSAGE: \n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
+        private void AddCourseInst (string dbServer, string dbName, string userName, string userPass, Aula_Instancia inst)
+        {
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
+
+            SqlCommand sqlcmd = new SqlCommand();
+            SqlCommand sqlcmd2 = new SqlCommand();
+
+            CN.Open();
+            if (CN.State == ConnectionState.Open)
+            {
+                db.Logged = true;
+                sqlcmd.CommandText = "INSERT INTO GymCompany.AulaInstancia(Fk_Aula, Fk_Professor, Codigo) VALUES(@fk_aula, @fk_professor, @codigo)";
+                //sqlcmd2.CommandText = "EXEC GymCompany.RemoveGym @nif";
+                sqlcmd.Parameters.Clear();
+                //sqlcmd2.Parameters.Clear();
+                sqlcmd.Parameters.AddWithValue("@fk_aula", inst.Fk_Aula);
+                sqlcmd.Parameters.AddWithValue("@fk_professor", inst.Fk_Professor);
+                sqlcmd.Parameters.AddWithValue("@codigo", inst.Codigo);
+
+                sqlcmd.Connection = CN;
+                //sqlcmd2.Parameters.AddWithValue("@nif", ofc.NIF);
+                //sqlcmd2.Parameters.AddWithValue("@designacao", ofc.Designacao);
+                //sqlcmd2.Connection = CN;
+            }
+
+            try
+            {
+                sqlcmd.ExecuteNonQuery();
+                //sqlcmd2.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to add Course Instance to the database. \n ERROR MESSAGE: \n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
         public void ShowPanelPerson()
         {
             panel3.Enabled = true;
