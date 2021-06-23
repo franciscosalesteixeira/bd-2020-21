@@ -683,7 +683,7 @@ namespace Companhia_Ginasios
                 CN.Close();
         }
 
-        private void AddEquip(string dbServer, string dbName, string userName, string userPass, Produto prod, Vende ven)
+        private void AddProd(string dbServer, string dbName, string userName, string userPass, Produto prod, Vende ven)
         {
             SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
                                                        "; uid = " + userName + ";" + "password = " + userPass);
@@ -883,6 +883,99 @@ namespace Companhia_Ginasios
 
             if (CN.State == ConnectionState.Open)
                 CN.Close();
+        }
+
+        private void SaveMiscBttn_Click_1(object sender, EventArgs e)
+        {
+
+            Equipamento eq = new Equipamento();
+            Produto prod = new Produto();
+            Professor prof = new Professor();
+            Aluno aluno = new Aluno();
+            Aula aula = new Aula();
+            Aula_Instancia insts = new Aula_Instancia();
+            Leciona lec = new Leciona();
+            Inscrito insc = new Inscrito();
+            Vende ven = new Vende();
+            Possui pos = new Possui();
+            Oferece ofc = new Oferece();
+
+            try
+            {
+                if (checkBox4.Checked)
+                {
+                    eq.Designacao = txtDesignation.Text;
+                    eq.Tipo_Equipamento = txtEqType.Text;
+                    eq.Quantidade = txtQuant.Text;
+                    pos.NIF = txtGymEq.Text;
+                    pos.Designacao = txtDesignation.Text;
+                    
+                    AddEquip(db.DbServer, db.DbName, db.UserName, db.UserPass, eq, pos);
+                    ClearEquipBttns();
+                }
+
+                if (checkBox5.Checked)
+                {
+                    prod.Codigo = txtCode.Text;
+                    prod.Nome = txtProdName.Text;
+                    prod.Preco = txtPrice.Text;
+                    prod.Stock = txtStock.Text;
+                    ven.NIF = txtProdGym.Text;
+                    ven.Codigo = txtCode.Text;
+
+
+                    AddProd(db.DbServer, db.DbName, db.UserName, db.UserPass, prod, ven);
+                    ClearProdBttns();
+                }
+
+                if (checkBox6.Checked)
+                {
+                    prof.Numero_Funcionario = txtProfId.Text;
+                    lec.Designacao_Aula = txtProfGym.Text;
+                    lec.Numero_Professor = txtProfId.Text;
+
+                    AddTeach(db.DbServer, db.DbName, db.UserName, db.UserPass, prof, lec);
+                    ClearProfBttns();
+                }
+
+                if (checkBox7.Checked)
+                {
+                    aluno.Numero_Cliente = txtStuId.Text;
+                    insc.Designacao_Aula = txtStuId.Text;
+                    insc.Numero_Aluno = txtStuId.Text;
+
+                    AddStu(db.DbServer, db.DbName, db.UserName, db.UserPass, aluno, insc);
+                    ClearStuBttns();
+                }
+
+                if (checkBox8.Checked)
+                {
+                    aula.Designacao = txtClId.Text;
+                    aula.Dias_Semana = txtCldays.Text;
+                    aula.Hora = txtCltime.Text;
+                    aula.Nr_Max_Alunos = txtClatt.Text;
+                    aula.Tipo_Aula = txtCltype.Text;
+                    ofc.Designacao = txtClId.Text;
+                    ofc.NIF = txtClGym.Text;
+
+                    AddClass(db.DbServer, db.DbName, db.UserName, db.UserPass, aula, ofc);
+                    ClearClassBttns();
+                }
+
+                if (checkBox9.Checked)
+                {
+                    insts.Codigo = txtInstCode.Text;
+                    insts.Fk_Aula = txtInstCl.Text;
+                    insts.Fk_Professor = txtInstProf.Text;
+
+                    AddCourseInst(db.DbServer, db.DbName, db.UserName, db.UserPass, insts);
+                    ClearInstBttns();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(db.Error + "\n" + ex.Message, "An Error Occurred");
+            }
         }
 
         public void ShowPanelPerson()
@@ -1664,6 +1757,6 @@ namespace Companhia_Ginasios
             txtFuncGym.Text = "";
 
         }
-
+        
     }
 }

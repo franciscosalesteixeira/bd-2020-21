@@ -836,6 +836,7 @@ namespace Companhia_Ginasios
             this.SaveMiscBttn.TabIndex = 6;
             this.SaveMiscBttn.Text = "Save";
             this.SaveMiscBttn.UseVisualStyleBackColor = true;
+            this.SaveMiscBttn.Click += new System.EventHandler(this.SaveMiscBttn_Click_1);
             // 
             // checkBox9
             // 
