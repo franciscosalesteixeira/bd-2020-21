@@ -103,6 +103,8 @@ namespace Companhia_Ginasios
             ClearFields();
             ShowAddBttns();
             HideDisplayBttns();
+            miscPanel.Visible = false;
+            miscPanel.Enabled = false;
             listBox1.Visible = false;
             listBox1.Enabled = false;
             panel1.Enabled = true;
@@ -659,10 +661,10 @@ namespace Companhia_Ginasios
             HideDisplayBttns();
             listBox1.Visible = false;
             listBox1.Enabled = false;
-            HideClientBttns();
-            HideEmployeeBttns();
             miscPanel.Visible = false;
             miscPanel.Enabled = false;
+            HideClientBttns();
+            HideEmployeeBttns();
             panel1.Visible = false;
             panel1.Enabled = false;
             panel3.Visible = true;
@@ -784,11 +786,31 @@ namespace Companhia_Ginasios
             }
         }
 
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            HideDisplayBttns();
+            listBox1.Enabled = false;
+            listBox1.Visible = false;
+            panel1.Enabled = false;
+            panel1.Visible = false;
+            panel2.Enabled = false;
+            panel2.Visible = false;
+            panel3.Enabled = false;
+            panel3.Visible = false;
+            miscPanel.Visible = true;
+            miscPanel.Enabled = true;
+            checkBox4.Enabled = true;
+            checkBox4.Visible = true;
+            checkBox4.Checked = true;
+        }
+
         private void AddMiscBttn_Click_1(object sender, EventArgs e)
         {
-            checkBox4.Checked = true;
+            
             HideEditBttns();
             HidePersonBttns();
+            HideDisplayBttns();
             panel1.Visible = false;
             panel2.Visible = false;
             panel1.Enabled = false;
@@ -799,6 +821,16 @@ namespace Companhia_Ginasios
             listBox1.Enabled = false;
             miscPanel.Visible = true;
             miscPanel.Enabled = true;
+            checkBox4.Enabled = true;
+            checkBox5.Enabled = true;
+            checkBox6.Enabled = true;
+            checkBox7.Enabled = true;
+            checkBox5.Visible = true;
+            checkBox6.Visible = true;
+            checkBox7.Visible = true;
+            checkBox4.Visible = true;
+            checkBox4.Checked = true;
+            
         }
 
         public void HideEquipBttns()
@@ -1388,5 +1420,6 @@ namespace Companhia_Ginasios
             txtFuncGym.Text = "";
 
         }
+
     }
 }
