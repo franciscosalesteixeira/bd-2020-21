@@ -1362,16 +1362,16 @@ namespace Companhia_Ginasios
             labelInstProf.Enabled = true;
             labelInstCode.Visible = true;
             labelInstCode.Enabled = true;
-            labelInstGym.Visible = true;
-            labelInstGym.Enabled = true;
+            labelInstGym.Visible = false;
+            labelInstGym.Enabled = false;
             txtInstCl.Visible = true;
             txtInstCl.Enabled = true;
             txtInstProf.Visible = true;
             txtInstProf.Enabled = true;
             txtInstCode.Visible = true;
             txtInstCode.Enabled = true;
-            txtInstGym.Visible = true;
-            txtInstGym.Enabled = true;
+            txtInstGym.Visible = false;
+            txtInstGym.Enabled = false;
 
         }
 

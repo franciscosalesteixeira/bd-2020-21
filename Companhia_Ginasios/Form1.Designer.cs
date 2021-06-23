@@ -632,9 +632,9 @@ namespace Companhia_Ginasios
             this.labelStuGym.AutoSize = true;
             this.labelStuGym.Location = new System.Drawing.Point(22, 118);
             this.labelStuGym.Name = "labelStuGym";
-            this.labelStuGym.Size = new System.Drawing.Size(32, 15);
+            this.labelStuGym.Size = new System.Drawing.Size(113, 15);
             this.labelStuGym.TabIndex = 31;
-            this.labelStuGym.Text = "Gym";
+            this.labelStuGym.Text = "Course Designation ";
             // 
             // txtStuId
             // 
@@ -664,9 +664,9 @@ namespace Companhia_Ginasios
             this.labelProfGym.AutoSize = true;
             this.labelProfGym.Location = new System.Drawing.Point(22, 118);
             this.labelProfGym.Name = "labelProfGym";
-            this.labelProfGym.Size = new System.Drawing.Size(32, 15);
+            this.labelProfGym.Size = new System.Drawing.Size(110, 15);
             this.labelProfGym.TabIndex = 27;
-            this.labelProfGym.Text = "Gym";
+            this.labelProfGym.Text = "Course Designation";
             // 
             // txtProfId
             // 
