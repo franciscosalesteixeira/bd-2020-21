@@ -770,7 +770,7 @@ namespace Companhia_Ginasios
                 CN.Close();
         }
 
-        private void AddTeach(string dbServer, string dbName, string userName, string userPass, Professor prof)
+        private void AddTeach(string dbServer, string dbName, string userName, string userPass, Professor prof, Leciona lec)
         {
             SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
                                                        "; uid = " + userName + ";" + "password = " + userPass);
@@ -783,20 +783,20 @@ namespace Companhia_Ginasios
             {
                 db.Logged = true;
                 sqlcmd.CommandText = "INSERT INTO GymCompany.Professor(Numero_Funcionario) VALUES(@numero_funcionario)";
-                //sqlcmd2.CommandText = "EXEC GymCompany.RemoveGym @nif";
+                sqlcmd2.CommandText = "EXEC GymCompany.NewProf @numProf, @aula";
                 sqlcmd.Parameters.Clear();
-                //sqlcmd2.Parameters.Clear();
+                sqlcmd2.Parameters.Clear();
                 sqlcmd.Parameters.AddWithValue("@Numero_Funcionario", prof.Numero_Funcionario);
                 sqlcmd.Connection = CN;
-                //sqlcmd2.Parameters.AddWithValue("@nif", ofc.NIF);
-                //sqlcmd2.Parameters.AddWithValue("@designacao", ofc.Designacao);
-                //sqlcmd2.Connection = CN;
+                sqlcmd2.Parameters.AddWithValue("@numProf", prof.Numero_Funcionario);
+                sqlcmd2.Parameters.AddWithValue("@aula", lec.Designacao_Aula);
+                sqlcmd2.Connection = CN;
             }
 
             try
             {
                 sqlcmd.ExecuteNonQuery();
-                //sqlcmd2.ExecuteNonQuery();
+                sqlcmd2.ExecuteNonQuery();
             }
 
             catch (Exception ex)
@@ -810,7 +810,7 @@ namespace Companhia_Ginasios
                 CN.Close();
         }
 
-        private void AddStu(string dbServer, string dbName, string userName, string userPass, Aluno stu)
+        private void AddStu(string dbServer, string dbName, string userName, string userPass, Aluno stu, Inscrito insc)
         {
             SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
                                                        "; uid = " + userName + ";" + "password = " + userPass);
@@ -823,20 +823,20 @@ namespace Companhia_Ginasios
             {
                 db.Logged = true;
                 sqlcmd.CommandText = "INSERT INTO GymCompany.Aluno(Numero_Cliente) VALUES(@numero_cliente)";
-                //sqlcmd2.CommandText = "EXEC GymCompany.RemoveGym @nif";
+                sqlcmd2.CommandText = "EXEC GymCompany.newSub @numero_cliente, @designacao_aula";
                 sqlcmd.Parameters.Clear();
-                //sqlcmd2.Parameters.Clear();
+                sqlcmd2.Parameters.Clear();
                 sqlcmd.Parameters.AddWithValue("@numero_cliente", stu.Numero_Cliente);
                 sqlcmd.Connection = CN;
-                //sqlcmd2.Parameters.AddWithValue("@nif", ofc.NIF);
-                //sqlcmd2.Parameters.AddWithValue("@designacao", ofc.Designacao);
-                //sqlcmd2.Connection = CN;
+                sqlcmd2.Parameters.AddWithValue("@numero_cliente", stu.Numero_Cliente);
+                sqlcmd2.Parameters.AddWithValue("@designacao_aula", insc.Designacao_Aula);
+                sqlcmd2.Connection = CN;
             }
 
             try
             {
                 sqlcmd.ExecuteNonQuery();
-                //sqlcmd2.ExecuteNonQuery();
+                sqlcmd2.ExecuteNonQuery();
             }
 
             catch (Exception ex)
@@ -856,30 +856,22 @@ namespace Companhia_Ginasios
                                                        "; uid = " + userName + ";" + "password = " + userPass);
 
             SqlCommand sqlcmd = new SqlCommand();
-            SqlCommand sqlcmd2 = new SqlCommand();
 
             CN.Open();
             if (CN.State == ConnectionState.Open)
             {
                 db.Logged = true;
                 sqlcmd.CommandText = "INSERT INTO GymCompany.AulaInstancia(Fk_Aula, Fk_Professor, Codigo) VALUES(@fk_aula, @fk_professor, @codigo)";
-                //sqlcmd2.CommandText = "EXEC GymCompany.RemoveGym @nif";
                 sqlcmd.Parameters.Clear();
-                //sqlcmd2.Parameters.Clear();
                 sqlcmd.Parameters.AddWithValue("@fk_aula", inst.Fk_Aula);
                 sqlcmd.Parameters.AddWithValue("@fk_professor", inst.Fk_Professor);
                 sqlcmd.Parameters.AddWithValue("@codigo", inst.Codigo);
-
                 sqlcmd.Connection = CN;
-                //sqlcmd2.Parameters.AddWithValue("@nif", ofc.NIF);
-                //sqlcmd2.Parameters.AddWithValue("@designacao", ofc.Designacao);
-                //sqlcmd2.Connection = CN;
             }
 
             try
             {
                 sqlcmd.ExecuteNonQuery();
-                //sqlcmd2.ExecuteNonQuery();
             }
 
             catch (Exception ex)
