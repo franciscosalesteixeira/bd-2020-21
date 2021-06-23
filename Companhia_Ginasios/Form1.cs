@@ -13,6 +13,7 @@ namespace Companhia_Ginasios
     {
 
         private Database db = new Database();
+        private string gymSelected;
 
         public Form1()
         {
@@ -990,6 +991,51 @@ namespace Companhia_Ginasios
             panel3.Visible = false;
         }
 
+        private void SLTBttn_Click(object sender, EventArgs e)
+        {
+            String morada = listBox1.Items[listBox1.SelectedIndex].ToString();
+            gymSelected = GetGymNif(db.DbServer, db.DbName, db.UserName, db.UserPass, morada);
+            //Ativar outro panel com botoes para listar os clientes, funcionarios, produtos, etc deste gym
+            //Acrescentar tbm botoes neste panel para associar clientes, funcionarios, produtos, etc a este gym
+        }
+
+        private string GetGymNif (string dbServer, string dbName, string userName, string userPass, string morada)
+        {
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                       "; uid = " + userName + ";" + "password = " + userPass);
+
+            string nif = "";
+
+            try
+            {
+                CN.Open();
+                if (CN.State == ConnectionState.Open)
+                {
+                    db.Logged = true;
+                    SqlCommand sqlcmd = new SqlCommand("SELECT GymCompany.Ginasio.NIF FROM GymCompany.Ginasio " +
+                        "WHERE GymCompany.Ginasio.Morada = '" + morada + "';", CN);
+                    SqlDataReader reader;
+                    reader = sqlcmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        nif = reader["NIF"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to get nif due to the following error: \r\n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+
+            return nif;
+        }
+
 
         private void AddPerson_Click_1(object sender, EventArgs e)
         {
@@ -1757,6 +1803,5 @@ namespace Companhia_Ginasios
             txtFuncGym.Text = "";
 
         }
-        
     }
 }

@@ -45,6 +45,7 @@ namespace Companhia_Ginasios
             this.txtNIF = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.SLTBttn = new System.Windows.Forms.Button();
             this.RemoveBttn = new System.Windows.Forms.Button();
             this.EditBttn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -158,7 +159,7 @@ namespace Companhia_Ginasios
             this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(0, 11);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(319, 364);
+            this.listBox1.Size = new System.Drawing.Size(319, 304);
             this.listBox1.TabIndex = 1;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -274,6 +275,7 @@ namespace Companhia_Ginasios
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.SLTBttn);
             this.panel2.Controls.Add(this.listBox1);
             this.panel2.Controls.Add(this.RemoveBttn);
             this.panel2.Controls.Add(this.EditBttn);
@@ -291,6 +293,16 @@ namespace Companhia_Ginasios
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(782, 385);
             this.panel2.TabIndex = 9;
+            // 
+            // SLTBttn
+            // 
+            this.SLTBttn.Location = new System.Drawing.Point(103, 328);
+            this.SLTBttn.Name = "SLTBttn";
+            this.SLTBttn.Size = new System.Drawing.Size(117, 47);
+            this.SLTBttn.TabIndex = 29;
+            this.SLTBttn.Text = "SELECT";
+            this.SLTBttn.UseVisualStyleBackColor = true;
+            this.SLTBttn.Click += new System.EventHandler(this.SLTBttn_Click);
             // 
             // RemoveBttn
             // 
@@ -1373,5 +1385,6 @@ namespace Companhia_Ginasios
         private CheckBox checkBox5;
         private CheckBox checkBox4;
         private Button button1;
+        private Button SLTBttn;
     }
 }
