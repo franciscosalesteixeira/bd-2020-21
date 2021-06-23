@@ -663,6 +663,10 @@ namespace Companhia_Ginasios
             HideEmployeeBttns();
             miscPanel.Visible = false;
             miscPanel.Enabled = false;
+            panel1.Visible = false;
+            panel1.Enabled = false;
+            panel3.Visible = true;
+            panel3.Enabled = true;
             ShowPanelPerson();
             AddPersonBttns();
         }
@@ -789,6 +793,8 @@ namespace Companhia_Ginasios
             panel2.Visible = false;
             panel1.Enabled = false;
             panel2.Enabled = false;
+            panel3.Visible = false;
+            panel3.Enabled = false;
             listBox1.Visible = false;
             listBox1.Enabled = false;
             miscPanel.Visible = true;
@@ -1233,6 +1239,12 @@ namespace Companhia_Ginasios
             txtSalEmp.Visible = true;
             txtFuncGym.Enabled = true;
             txtFuncGym.Visible = true;
+            checkBox1.Enabled = true;
+            checkBox2.Enabled = true;
+            checkBox3.Enabled = true;
+            checkBox1.Visible = true;
+            checkBox2.Visible = true;
+            checkBox3.Visible = true;
 
         }
 
@@ -1275,12 +1287,12 @@ namespace Companhia_Ginasios
             txtSubClt.Visible = true;
             txtClientGym.Enabled = true;
             txtClientGym.Visible = true;
-            checkBox1.Enabled = false;
-            checkBox2.Enabled = false;
-            checkBox3.Enabled = false;
-            checkBox1.Visible = false;
-            checkBox2.Visible = false;
-            checkBox3.Visible = false;
+            checkBox1.Enabled = true;
+            checkBox2.Enabled = true;
+            checkBox3.Enabled = true;
+            checkBox1.Visible = true;
+            checkBox2.Visible = true;
+            checkBox3.Visible = true;
 
         }
 
