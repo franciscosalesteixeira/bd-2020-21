@@ -45,6 +45,60 @@ namespace Companhia_Ginasios
             this.txtNIF = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.miscPanel = new System.Windows.Forms.Panel();
+            this.txtInstProf = new System.Windows.Forms.TextBox();
+            this.labelInstProf = new System.Windows.Forms.Label();
+            this.txtInstCl = new System.Windows.Forms.TextBox();
+            this.labelInstCl = new System.Windows.Forms.Label();
+            this.txtInstGym = new System.Windows.Forms.TextBox();
+            this.labelInstGym = new System.Windows.Forms.Label();
+            this.txtInstCode = new System.Windows.Forms.TextBox();
+            this.labelInstCode = new System.Windows.Forms.Label();
+            this.txtClGym = new System.Windows.Forms.TextBox();
+            this.labelClGym = new System.Windows.Forms.Label();
+            this.txtCltype = new System.Windows.Forms.TextBox();
+            this.labelCltype = new System.Windows.Forms.Label();
+            this.txtClId = new System.Windows.Forms.TextBox();
+            this.labelClId = new System.Windows.Forms.Label();
+            this.txtClatt = new System.Windows.Forms.TextBox();
+            this.labelClatt = new System.Windows.Forms.Label();
+            this.txtCldays = new System.Windows.Forms.TextBox();
+            this.labelCldays = new System.Windows.Forms.Label();
+            this.txtCltime = new System.Windows.Forms.TextBox();
+            this.labelCltime = new System.Windows.Forms.Label();
+            this.txtStuGym = new System.Windows.Forms.TextBox();
+            this.labelStuGym = new System.Windows.Forms.Label();
+            this.txtStuId = new System.Windows.Forms.TextBox();
+            this.labelStuId = new System.Windows.Forms.Label();
+            this.txtProfGym = new System.Windows.Forms.TextBox();
+            this.labelProfGym = new System.Windows.Forms.Label();
+            this.txtProfId = new System.Windows.Forms.TextBox();
+            this.labelProfId = new System.Windows.Forms.Label();
+            this.txtProdGym = new System.Windows.Forms.TextBox();
+            this.labelProdGym = new System.Windows.Forms.Label();
+            this.txtStock = new System.Windows.Forms.TextBox();
+            this.labelStock = new System.Windows.Forms.Label();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.labelPrice = new System.Windows.Forms.Label();
+            this.txtProdName = new System.Windows.Forms.TextBox();
+            this.labelProdName = new System.Windows.Forms.Label();
+            this.txtCode = new System.Windows.Forms.TextBox();
+            this.labelCode = new System.Windows.Forms.Label();
+            this.txtGymEq = new System.Windows.Forms.TextBox();
+            this.labelGymEq = new System.Windows.Forms.Label();
+            this.txtQuant = new System.Windows.Forms.TextBox();
+            this.labelQuant = new System.Windows.Forms.Label();
+            this.txtEqType = new System.Windows.Forms.TextBox();
+            this.labelEqtype = new System.Windows.Forms.Label();
+            this.txtDesignation = new System.Windows.Forms.TextBox();
+            this.labelDesignation = new System.Windows.Forms.Label();
+            this.SaveMiscBttn = new System.Windows.Forms.Button();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.RemoveBttn = new System.Windows.Forms.Button();
             this.EditBttn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -86,9 +140,15 @@ namespace Companhia_Ginasios
             this.txtPersonId = new System.Windows.Forms.TextBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.txtClientGym = new System.Windows.Forms.TextBox();
+            this.labelClientGym = new System.Windows.Forms.Label();
+            this.txtFuncGym = new System.Windows.Forms.TextBox();
+            this.labelFuncGym = new System.Windows.Forms.Label();
             this.AddPerson = new System.Windows.Forms.Button();
+            this.AddMiscBttn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.miscPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,7 +193,7 @@ namespace Companhia_Ginasios
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtNIF);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(21, 48);
+            this.panel1.Location = new System.Drawing.Point(21, 38);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(502, 400);
             this.panel1.TabIndex = 4;
@@ -214,6 +274,7 @@ namespace Companhia_Ginasios
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.miscPanel);
             this.panel2.Controls.Add(this.listBox1);
             this.panel2.Controls.Add(this.RemoveBttn);
             this.panel2.Controls.Add(this.EditBttn);
@@ -231,6 +292,508 @@ namespace Companhia_Ginasios
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(782, 385);
             this.panel2.TabIndex = 9;
+            // 
+            // miscPanel
+            // 
+            this.miscPanel.Controls.Add(this.txtInstProf);
+            this.miscPanel.Controls.Add(this.labelInstProf);
+            this.miscPanel.Controls.Add(this.txtInstCl);
+            this.miscPanel.Controls.Add(this.labelInstCl);
+            this.miscPanel.Controls.Add(this.txtInstGym);
+            this.miscPanel.Controls.Add(this.labelInstGym);
+            this.miscPanel.Controls.Add(this.txtInstCode);
+            this.miscPanel.Controls.Add(this.labelInstCode);
+            this.miscPanel.Controls.Add(this.txtClGym);
+            this.miscPanel.Controls.Add(this.labelClGym);
+            this.miscPanel.Controls.Add(this.txtCltype);
+            this.miscPanel.Controls.Add(this.labelCltype);
+            this.miscPanel.Controls.Add(this.txtClId);
+            this.miscPanel.Controls.Add(this.labelClId);
+            this.miscPanel.Controls.Add(this.txtClatt);
+            this.miscPanel.Controls.Add(this.labelClatt);
+            this.miscPanel.Controls.Add(this.txtCldays);
+            this.miscPanel.Controls.Add(this.labelCldays);
+            this.miscPanel.Controls.Add(this.txtCltime);
+            this.miscPanel.Controls.Add(this.labelCltime);
+            this.miscPanel.Controls.Add(this.txtStuGym);
+            this.miscPanel.Controls.Add(this.labelStuGym);
+            this.miscPanel.Controls.Add(this.txtStuId);
+            this.miscPanel.Controls.Add(this.labelStuId);
+            this.miscPanel.Controls.Add(this.txtProfGym);
+            this.miscPanel.Controls.Add(this.labelProfGym);
+            this.miscPanel.Controls.Add(this.txtProfId);
+            this.miscPanel.Controls.Add(this.labelProfId);
+            this.miscPanel.Controls.Add(this.txtProdGym);
+            this.miscPanel.Controls.Add(this.labelProdGym);
+            this.miscPanel.Controls.Add(this.txtStock);
+            this.miscPanel.Controls.Add(this.labelStock);
+            this.miscPanel.Controls.Add(this.txtPrice);
+            this.miscPanel.Controls.Add(this.labelPrice);
+            this.miscPanel.Controls.Add(this.txtProdName);
+            this.miscPanel.Controls.Add(this.labelProdName);
+            this.miscPanel.Controls.Add(this.txtCode);
+            this.miscPanel.Controls.Add(this.labelCode);
+            this.miscPanel.Controls.Add(this.txtGymEq);
+            this.miscPanel.Controls.Add(this.labelGymEq);
+            this.miscPanel.Controls.Add(this.txtQuant);
+            this.miscPanel.Controls.Add(this.labelQuant);
+            this.miscPanel.Controls.Add(this.txtEqType);
+            this.miscPanel.Controls.Add(this.labelEqtype);
+            this.miscPanel.Controls.Add(this.txtDesignation);
+            this.miscPanel.Controls.Add(this.labelDesignation);
+            this.miscPanel.Controls.Add(this.SaveMiscBttn);
+            this.miscPanel.Controls.Add(this.checkBox9);
+            this.miscPanel.Controls.Add(this.checkBox8);
+            this.miscPanel.Controls.Add(this.checkBox7);
+            this.miscPanel.Controls.Add(this.checkBox6);
+            this.miscPanel.Controls.Add(this.checkBox5);
+            this.miscPanel.Controls.Add(this.checkBox4);
+            this.miscPanel.Location = new System.Drawing.Point(0, 0);
+            this.miscPanel.Name = "miscPanel";
+            this.miscPanel.Size = new System.Drawing.Size(696, 385);
+            this.miscPanel.TabIndex = 29;
+            // 
+            // txtInstProf
+            // 
+            this.txtInstProf.Location = new System.Drawing.Point(22, 139);
+            this.txtInstProf.Name = "txtInstProf";
+            this.txtInstProf.Size = new System.Drawing.Size(308, 23);
+            this.txtInstProf.TabIndex = 52;
+            // 
+            // labelInstProf
+            // 
+            this.labelInstProf.AutoSize = true;
+            this.labelInstProf.Location = new System.Drawing.Point(22, 118);
+            this.labelInstProf.Name = "labelInstProf";
+            this.labelInstProf.Size = new System.Drawing.Size(61, 15);
+            this.labelInstProf.TabIndex = 51;
+            this.labelInstProf.Text = "Teacher ID";
+            // 
+            // txtInstCl
+            // 
+            this.txtInstCl.Location = new System.Drawing.Point(22, 86);
+            this.txtInstCl.Name = "txtInstCl";
+            this.txtInstCl.Size = new System.Drawing.Size(308, 23);
+            this.txtInstCl.TabIndex = 50;
+            // 
+            // labelInstCl
+            // 
+            this.labelInstCl.AutoSize = true;
+            this.labelInstCl.Location = new System.Drawing.Point(22, 65);
+            this.labelInstCl.Name = "labelInstCl";
+            this.labelInstCl.Size = new System.Drawing.Size(44, 15);
+            this.labelInstCl.TabIndex = 49;
+            this.labelInstCl.Text = "Course";
+            // 
+            // txtInstGym
+            // 
+            this.txtInstGym.Location = new System.Drawing.Point(22, 249);
+            this.txtInstGym.Name = "txtInstGym";
+            this.txtInstGym.Size = new System.Drawing.Size(308, 23);
+            this.txtInstGym.TabIndex = 48;
+            // 
+            // labelInstGym
+            // 
+            this.labelInstGym.AutoSize = true;
+            this.labelInstGym.Location = new System.Drawing.Point(22, 228);
+            this.labelInstGym.Name = "labelInstGym";
+            this.labelInstGym.Size = new System.Drawing.Size(32, 15);
+            this.labelInstGym.TabIndex = 47;
+            this.labelInstGym.Text = "Gym";
+            // 
+            // txtInstCode
+            // 
+            this.txtInstCode.Location = new System.Drawing.Point(22, 196);
+            this.txtInstCode.Name = "txtInstCode";
+            this.txtInstCode.Size = new System.Drawing.Size(308, 23);
+            this.txtInstCode.TabIndex = 46;
+            // 
+            // labelInstCode
+            // 
+            this.labelInstCode.AutoSize = true;
+            this.labelInstCode.Location = new System.Drawing.Point(22, 175);
+            this.labelInstCode.Name = "labelInstCode";
+            this.labelInstCode.Size = new System.Drawing.Size(35, 15);
+            this.labelInstCode.TabIndex = 45;
+            this.labelInstCode.Text = "Code";
+            // 
+            // txtClGym
+            // 
+            this.txtClGym.Location = new System.Drawing.Point(346, 142);
+            this.txtClGym.Name = "txtClGym";
+            this.txtClGym.Size = new System.Drawing.Size(308, 23);
+            this.txtClGym.TabIndex = 44;
+            // 
+            // labelClGym
+            // 
+            this.labelClGym.AutoSize = true;
+            this.labelClGym.Location = new System.Drawing.Point(346, 121);
+            this.labelClGym.Name = "labelClGym";
+            this.labelClGym.Size = new System.Drawing.Size(32, 15);
+            this.labelClGym.TabIndex = 43;
+            this.labelClGym.Text = "Gym";
+            // 
+            // txtCltype
+            // 
+            this.txtCltype.Location = new System.Drawing.Point(22, 139);
+            this.txtCltype.Name = "txtCltype";
+            this.txtCltype.Size = new System.Drawing.Size(308, 23);
+            this.txtCltype.TabIndex = 42;
+            // 
+            // labelCltype
+            // 
+            this.labelCltype.AutoSize = true;
+            this.labelCltype.Location = new System.Drawing.Point(22, 118);
+            this.labelCltype.Name = "labelCltype";
+            this.labelCltype.Size = new System.Drawing.Size(71, 15);
+            this.labelCltype.TabIndex = 41;
+            this.labelCltype.Text = "Course Type";
+            // 
+            // txtClId
+            // 
+            this.txtClId.Location = new System.Drawing.Point(22, 86);
+            this.txtClId.Name = "txtClId";
+            this.txtClId.Size = new System.Drawing.Size(308, 23);
+            this.txtClId.TabIndex = 40;
+            // 
+            // labelClId
+            // 
+            this.labelClId.AutoSize = true;
+            this.labelClId.Location = new System.Drawing.Point(22, 65);
+            this.labelClId.Name = "labelClId";
+            this.labelClId.Size = new System.Drawing.Size(70, 15);
+            this.labelClId.TabIndex = 39;
+            this.labelClId.Text = "Designation";
+            // 
+            // txtClatt
+            // 
+            this.txtClatt.Location = new System.Drawing.Point(346, 86);
+            this.txtClatt.Name = "txtClatt";
+            this.txtClatt.Size = new System.Drawing.Size(308, 23);
+            this.txtClatt.TabIndex = 38;
+            // 
+            // labelClatt
+            // 
+            this.labelClatt.AutoSize = true;
+            this.labelClatt.Location = new System.Drawing.Point(346, 65);
+            this.labelClatt.Name = "labelClatt";
+            this.labelClatt.Size = new System.Drawing.Size(94, 15);
+            this.labelClatt.TabIndex = 37;
+            this.labelClatt.Text = "Max Attendance";
+            // 
+            // txtCldays
+            // 
+            this.txtCldays.Location = new System.Drawing.Point(22, 249);
+            this.txtCldays.Name = "txtCldays";
+            this.txtCldays.Size = new System.Drawing.Size(308, 23);
+            this.txtCldays.TabIndex = 36;
+            // 
+            // labelCldays
+            // 
+            this.labelCldays.AutoSize = true;
+            this.labelCldays.Location = new System.Drawing.Point(22, 228);
+            this.labelCldays.Name = "labelCldays";
+            this.labelCldays.Size = new System.Drawing.Size(32, 15);
+            this.labelCldays.TabIndex = 35;
+            this.labelCldays.Text = "Days";
+            // 
+            // txtCltime
+            // 
+            this.txtCltime.Location = new System.Drawing.Point(22, 196);
+            this.txtCltime.Name = "txtCltime";
+            this.txtCltime.Size = new System.Drawing.Size(308, 23);
+            this.txtCltime.TabIndex = 34;
+            // 
+            // labelCltime
+            // 
+            this.labelCltime.AutoSize = true;
+            this.labelCltime.Location = new System.Drawing.Point(22, 175);
+            this.labelCltime.Name = "labelCltime";
+            this.labelCltime.Size = new System.Drawing.Size(33, 15);
+            this.labelCltime.TabIndex = 33;
+            this.labelCltime.Text = "Time";
+            // 
+            // txtStuGym
+            // 
+            this.txtStuGym.Location = new System.Drawing.Point(22, 139);
+            this.txtStuGym.Name = "txtStuGym";
+            this.txtStuGym.Size = new System.Drawing.Size(308, 23);
+            this.txtStuGym.TabIndex = 32;
+            // 
+            // labelStuGym
+            // 
+            this.labelStuGym.AutoSize = true;
+            this.labelStuGym.Location = new System.Drawing.Point(22, 118);
+            this.labelStuGym.Name = "labelStuGym";
+            this.labelStuGym.Size = new System.Drawing.Size(32, 15);
+            this.labelStuGym.TabIndex = 31;
+            this.labelStuGym.Text = "Gym";
+            // 
+            // txtStuId
+            // 
+            this.txtStuId.Location = new System.Drawing.Point(22, 86);
+            this.txtStuId.Name = "txtStuId";
+            this.txtStuId.Size = new System.Drawing.Size(308, 23);
+            this.txtStuId.TabIndex = 30;
+            // 
+            // labelStuId
+            // 
+            this.labelStuId.AutoSize = true;
+            this.labelStuId.Location = new System.Drawing.Point(22, 65);
+            this.labelStuId.Name = "labelStuId";
+            this.labelStuId.Size = new System.Drawing.Size(85, 15);
+            this.labelStuId.TabIndex = 29;
+            this.labelStuId.Text = "Client Number";
+            // 
+            // txtProfGym
+            // 
+            this.txtProfGym.Location = new System.Drawing.Point(22, 139);
+            this.txtProfGym.Name = "txtProfGym";
+            this.txtProfGym.Size = new System.Drawing.Size(308, 23);
+            this.txtProfGym.TabIndex = 28;
+            // 
+            // labelProfGym
+            // 
+            this.labelProfGym.AutoSize = true;
+            this.labelProfGym.Location = new System.Drawing.Point(22, 118);
+            this.labelProfGym.Name = "labelProfGym";
+            this.labelProfGym.Size = new System.Drawing.Size(32, 15);
+            this.labelProfGym.TabIndex = 27;
+            this.labelProfGym.Text = "Gym";
+            // 
+            // txtProfId
+            // 
+            this.txtProfId.Location = new System.Drawing.Point(22, 86);
+            this.txtProfId.Name = "txtProfId";
+            this.txtProfId.Size = new System.Drawing.Size(308, 23);
+            this.txtProfId.TabIndex = 26;
+            // 
+            // labelProfId
+            // 
+            this.labelProfId.AutoSize = true;
+            this.labelProfId.Location = new System.Drawing.Point(22, 65);
+            this.labelProfId.Name = "labelProfId";
+            this.labelProfId.Size = new System.Drawing.Size(106, 15);
+            this.labelProfId.TabIndex = 25;
+            this.labelProfId.Text = "Employee Number";
+            // 
+            // txtProdGym
+            // 
+            this.txtProdGym.Location = new System.Drawing.Point(346, 86);
+            this.txtProdGym.Name = "txtProdGym";
+            this.txtProdGym.Size = new System.Drawing.Size(308, 23);
+            this.txtProdGym.TabIndex = 24;
+            // 
+            // labelProdGym
+            // 
+            this.labelProdGym.AutoSize = true;
+            this.labelProdGym.Location = new System.Drawing.Point(346, 65);
+            this.labelProdGym.Name = "labelProdGym";
+            this.labelProdGym.Size = new System.Drawing.Size(32, 15);
+            this.labelProdGym.TabIndex = 23;
+            this.labelProdGym.Text = "Gym";
+            // 
+            // txtStock
+            // 
+            this.txtStock.Location = new System.Drawing.Point(22, 249);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(308, 23);
+            this.txtStock.TabIndex = 22;
+            // 
+            // labelStock
+            // 
+            this.labelStock.AutoSize = true;
+            this.labelStock.Location = new System.Drawing.Point(22, 228);
+            this.labelStock.Name = "labelStock";
+            this.labelStock.Size = new System.Drawing.Size(36, 15);
+            this.labelStock.TabIndex = 21;
+            this.labelStock.Text = "Stock";
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(22, 196);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(308, 23);
+            this.txtPrice.TabIndex = 20;
+            // 
+            // labelPrice
+            // 
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Location = new System.Drawing.Point(22, 175);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(33, 15);
+            this.labelPrice.TabIndex = 19;
+            this.labelPrice.Text = "Price";
+            // 
+            // txtProdName
+            // 
+            this.txtProdName.Location = new System.Drawing.Point(22, 142);
+            this.txtProdName.Name = "txtProdName";
+            this.txtProdName.Size = new System.Drawing.Size(308, 23);
+            this.txtProdName.TabIndex = 18;
+            // 
+            // labelProdName
+            // 
+            this.labelProdName.AutoSize = true;
+            this.labelProdName.Location = new System.Drawing.Point(22, 121);
+            this.labelProdName.Name = "labelProdName";
+            this.labelProdName.Size = new System.Drawing.Size(39, 15);
+            this.labelProdName.TabIndex = 17;
+            this.labelProdName.Text = "Name";
+            // 
+            // txtCode
+            // 
+            this.txtCode.Location = new System.Drawing.Point(22, 86);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(308, 23);
+            this.txtCode.TabIndex = 16;
+            // 
+            // labelCode
+            // 
+            this.labelCode.AutoSize = true;
+            this.labelCode.Location = new System.Drawing.Point(22, 65);
+            this.labelCode.Name = "labelCode";
+            this.labelCode.Size = new System.Drawing.Size(35, 15);
+            this.labelCode.TabIndex = 15;
+            this.labelCode.Text = "Code";
+            // 
+            // txtGymEq
+            // 
+            this.txtGymEq.Location = new System.Drawing.Point(22, 249);
+            this.txtGymEq.Name = "txtGymEq";
+            this.txtGymEq.Size = new System.Drawing.Size(308, 23);
+            this.txtGymEq.TabIndex = 14;
+            // 
+            // labelGymEq
+            // 
+            this.labelGymEq.AutoSize = true;
+            this.labelGymEq.Location = new System.Drawing.Point(22, 228);
+            this.labelGymEq.Name = "labelGymEq";
+            this.labelGymEq.Size = new System.Drawing.Size(32, 15);
+            this.labelGymEq.TabIndex = 13;
+            this.labelGymEq.Text = "Gym";
+            // 
+            // txtQuant
+            // 
+            this.txtQuant.Location = new System.Drawing.Point(22, 196);
+            this.txtQuant.Name = "txtQuant";
+            this.txtQuant.Size = new System.Drawing.Size(308, 23);
+            this.txtQuant.TabIndex = 12;
+            // 
+            // labelQuant
+            // 
+            this.labelQuant.AutoSize = true;
+            this.labelQuant.Location = new System.Drawing.Point(22, 175);
+            this.labelQuant.Name = "labelQuant";
+            this.labelQuant.Size = new System.Drawing.Size(53, 15);
+            this.labelQuant.TabIndex = 11;
+            this.labelQuant.Text = "Quantity";
+            // 
+            // txtEqType
+            // 
+            this.txtEqType.Location = new System.Drawing.Point(22, 142);
+            this.txtEqType.Name = "txtEqType";
+            this.txtEqType.Size = new System.Drawing.Size(308, 23);
+            this.txtEqType.TabIndex = 10;
+            // 
+            // labelEqtype
+            // 
+            this.labelEqtype.AutoSize = true;
+            this.labelEqtype.Location = new System.Drawing.Point(22, 121);
+            this.labelEqtype.Name = "labelEqtype";
+            this.labelEqtype.Size = new System.Drawing.Size(92, 15);
+            this.labelEqtype.TabIndex = 9;
+            this.labelEqtype.Text = "Equipment Type";
+            // 
+            // txtDesignation
+            // 
+            this.txtDesignation.Location = new System.Drawing.Point(22, 86);
+            this.txtDesignation.Name = "txtDesignation";
+            this.txtDesignation.Size = new System.Drawing.Size(308, 23);
+            this.txtDesignation.TabIndex = 8;
+            // 
+            // labelDesignation
+            // 
+            this.labelDesignation.AutoSize = true;
+            this.labelDesignation.Location = new System.Drawing.Point(22, 65);
+            this.labelDesignation.Name = "labelDesignation";
+            this.labelDesignation.Size = new System.Drawing.Size(70, 15);
+            this.labelDesignation.TabIndex = 7;
+            this.labelDesignation.Text = "Designation";
+            // 
+            // SaveMiscBttn
+            // 
+            this.SaveMiscBttn.Location = new System.Drawing.Point(22, 324);
+            this.SaveMiscBttn.Name = "SaveMiscBttn";
+            this.SaveMiscBttn.Size = new System.Drawing.Size(113, 49);
+            this.SaveMiscBttn.TabIndex = 6;
+            this.SaveMiscBttn.Text = "Save";
+            this.SaveMiscBttn.UseVisualStyleBackColor = true;
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(400, 21);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(110, 19);
+            this.checkBox9.TabIndex = 5;
+            this.checkBox9.Text = "Course Instance";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkBox9.CheckStateChanged += new System.EventHandler(this.checkBox9_CheckStateChanged);
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(331, 21);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(63, 19);
+            this.checkBox8.TabIndex = 4;
+            this.checkBox8.Text = "Course";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkBox8.CheckStateChanged += new System.EventHandler(this.checkBox8_CheckStateChanged);
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(258, 21);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(67, 19);
+            this.checkBox7.TabIndex = 3;
+            this.checkBox7.Text = "Student";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckStateChanged += new System.EventHandler(this.checkBox7_CheckStateChanged);
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(186, 21);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(66, 19);
+            this.checkBox6.TabIndex = 2;
+            this.checkBox6.Text = "Teacher";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckStateChanged += new System.EventHandler(this.checkBox6_CheckStateChanged);
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(112, 21);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(68, 19);
+            this.checkBox5.TabIndex = 1;
+            this.checkBox5.Text = "Product";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckStateChanged += new System.EventHandler(this.checkBox5_CheckStateChanged);
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(22, 21);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(84, 19);
+            this.checkBox4.TabIndex = 0;
+            this.checkBox4.Text = "Equipment";
+            this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // RemoveBttn
             // 
@@ -370,6 +933,10 @@ namespace Companhia_Ginasios
             this.panel3.Controls.Add(this.txtPersonId);
             this.panel3.Controls.Add(this.checkBox2);
             this.panel3.Controls.Add(this.checkBox1);
+            this.panel3.Controls.Add(this.txtClientGym);
+            this.panel3.Controls.Add(this.labelClientGym);
+            this.panel3.Controls.Add(this.txtFuncGym);
+            this.panel3.Controls.Add(this.labelFuncGym);
             this.panel3.Location = new System.Drawing.Point(21, 38);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(358, 394);
@@ -610,6 +1177,38 @@ namespace Companhia_Ginasios
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
+            // txtClientGym
+            // 
+            this.txtClientGym.Location = new System.Drawing.Point(43, 259);
+            this.txtClientGym.Name = "txtClientGym";
+            this.txtClientGym.Size = new System.Drawing.Size(297, 23);
+            this.txtClientGym.TabIndex = 31;
+            // 
+            // labelClientGym
+            // 
+            this.labelClientGym.AutoSize = true;
+            this.labelClientGym.Location = new System.Drawing.Point(43, 240);
+            this.labelClientGym.Name = "labelClientGym";
+            this.labelClientGym.Size = new System.Drawing.Size(32, 15);
+            this.labelClientGym.TabIndex = 30;
+            this.labelClientGym.Text = "Gym";
+            // 
+            // txtFuncGym
+            // 
+            this.txtFuncGym.Location = new System.Drawing.Point(43, 315);
+            this.txtFuncGym.Name = "txtFuncGym";
+            this.txtFuncGym.Size = new System.Drawing.Size(297, 23);
+            this.txtFuncGym.TabIndex = 29;
+            // 
+            // labelFuncGym
+            // 
+            this.labelFuncGym.AutoSize = true;
+            this.labelFuncGym.Location = new System.Drawing.Point(43, 297);
+            this.labelFuncGym.Name = "labelFuncGym";
+            this.labelFuncGym.Size = new System.Drawing.Size(32, 15);
+            this.labelFuncGym.TabIndex = 28;
+            this.labelFuncGym.Text = "Gym";
+            // 
             // AddPerson
             // 
             this.AddPerson.Location = new System.Drawing.Point(203, 9);
@@ -620,11 +1219,22 @@ namespace Companhia_Ginasios
             this.AddPerson.UseVisualStyleBackColor = true;
             this.AddPerson.Click += new System.EventHandler(this.AddPerson_Click_1);
             // 
+            // AddMiscBttn
+            // 
+            this.AddMiscBttn.Location = new System.Drawing.Point(304, 9);
+            this.AddMiscBttn.Name = "AddMiscBttn";
+            this.AddMiscBttn.Size = new System.Drawing.Size(75, 23);
+            this.AddMiscBttn.TabIndex = 12;
+            this.AddMiscBttn.Text = "Add Misc";
+            this.AddMiscBttn.UseVisualStyleBackColor = true;
+            this.AddMiscBttn.Click += new System.EventHandler(this.AddMiscBttn_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(815, 450);
+            this.Controls.Add(this.AddMiscBttn);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.AddPerson);
             this.Controls.Add(this.AddBttn);
@@ -637,6 +1247,8 @@ namespace Companhia_Ginasios
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.miscPanel.ResumeLayout(false);
+            this.miscPanel.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -700,5 +1312,64 @@ namespace Companhia_Ginasios
         private TextBox txtPersonName;
         private Button AddPerson;
         private CheckBox checkBox3;
+        private TextBox txtClientGym;
+        private Label labelClientGym;
+        private TextBox txtFuncGym;
+        private Label labelFuncGym;
+        private Panel miscPanel;
+        private CheckBox checkBox9;
+        private CheckBox checkBox8;
+        private CheckBox checkBox7;
+        private CheckBox checkBox6;
+        private CheckBox checkBox5;
+        private CheckBox checkBox4;
+        private Button AddMiscBttn;
+        private TextBox txtGymEq;
+        private Label labelGymEq;
+        private TextBox txtQuant;
+        private Label labelQuant;
+        private TextBox txtEqType;
+        private Label labelEqtype;
+        private TextBox txtDesignation;
+        private Label labelDesignation;
+        private Button SaveMiscBttn;
+        private TextBox txtStock;
+        private Label labelStock;
+        private TextBox txtPrice;
+        private Label labelPrice;
+        private TextBox txtProdName;
+        private Label labelProdName;
+        private TextBox txtCode;
+        private Label labelCode;
+        private TextBox txtProfGym;
+        private Label labelProfGym;
+        private TextBox txtProfId;
+        private Label labelProfId;
+        private TextBox txtProdGym;
+        private Label labelProdGym;
+        private TextBox txtClGym;
+        private Label labelClGym;
+        private TextBox txtCltype;
+        private Label labelCltype;
+        private TextBox txtClId;
+        private Label labelClId;
+        private TextBox txtClatt;
+        private Label labelClatt;
+        private TextBox txtCldays;
+        private Label labelCldays;
+        private TextBox txtCltime;
+        private Label labelCltime;
+        private TextBox txtStuGym;
+        private Label labelStuGym;
+        private TextBox txtStuId;
+        private Label labelStuId;
+        private TextBox txtInstProf;
+        private Label labelInstProf;
+        private TextBox txtInstCl;
+        private Label labelInstCl;
+        private TextBox txtInstGym;
+        private Label labelInstGym;
+        private TextBox txtInstCode;
+        private Label labelInstCode;
     }
 }

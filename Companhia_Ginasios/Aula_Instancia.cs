@@ -31,7 +31,7 @@ namespace Companhia_Ginasios
 			{
 				if (value == null | String.IsNullOrEmpty(value))
 				{
-					throw new Exception("Class field can't be empty");
+					throw new Exception("Course field can't be empty");
 				}
 				fk_aula = value;
 			}
