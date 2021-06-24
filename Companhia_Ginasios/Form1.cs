@@ -997,6 +997,60 @@ namespace Companhia_Ginasios
             gymSelected = GetGymNif(db.DbServer, db.DbName, db.UserName, db.UserPass, morada);
             //Ativar outro panel com botoes para listar os clientes, funcionarios, produtos, etc deste gym
             //Acrescentar tbm botoes neste panel para associar clientes, funcionarios, produtos, etc a este gym
+            listBox2
+
+            numerocliente = SELECT GymCompany.Tem_Clientes.Numero_Cliente FROM GymCompany.Tem_Clientes WHERE GymCompany.Tem_Clientes.NIF = gymSelected;
+
+            SELECT GymCompany.Pessoa.Nome
+            FROM GymCompany.Pessoa INNER JOIN GymCompany.Cliente ON GymCompany.Cliente.Numero_CC = GymCompany.Pessoa.Numero_CC
+            WHERE GymCompany.Cliente.Numero_Cliente = numerocliente;
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void DisplayClients(string dbServer, string dbName, string userName, string userPass)
+        {
+
+            panel1.Visible = false;
+            panel1.Enabled = false;
+            HidePanelPerson();
+            miscPanel.Visible = false;
+            miscPanel.Enabled = false;
+
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                        "; uid = " + userName + ";" + "password = " + userPass);
+
+            try
+            {
+                CN.Open();
+                if (CN.State == ConnectionState.Open)
+                {
+                    string morada = "";
+                    db.Logged = true;
+                    SqlCommand sqlcmd = new SqlCommand("SELECT * FROM GymCompany.Tem_Funcionarios; ", CN);
+                    SqlDataReader reader;
+                    reader = sqlcmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        morada = reader["Morada"].ToString();
+                        listBox1.Items.Add(morada);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to display data due to the following error: \r\n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+
         }
 
         private string GetGymNif (string dbServer, string dbName, string userName, string userPass, string morada)

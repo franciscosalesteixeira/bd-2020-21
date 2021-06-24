@@ -45,6 +45,8 @@ namespace Companhia_Ginasios
             this.txtNIF = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.SLTEmp = new System.Windows.Forms.Button();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.SLTBttn = new System.Windows.Forms.Button();
             this.RemoveBttn = new System.Windows.Forms.Button();
             this.EditBttn = new System.Windows.Forms.Button();
@@ -275,6 +277,8 @@ namespace Companhia_Ginasios
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.SLTEmp);
+            this.panel2.Controls.Add(this.listBox2);
             this.panel2.Controls.Add(this.SLTBttn);
             this.panel2.Controls.Add(this.listBox1);
             this.panel2.Controls.Add(this.RemoveBttn);
@@ -294,13 +298,32 @@ namespace Companhia_Ginasios
             this.panel2.Size = new System.Drawing.Size(782, 385);
             this.panel2.TabIndex = 9;
             // 
+            // SLTEmp
+            // 
+            this.SLTEmp.Location = new System.Drawing.Point(126, 328);
+            this.SLTEmp.Name = "SLTEmp";
+            this.SLTEmp.Size = new System.Drawing.Size(117, 47);
+            this.SLTEmp.TabIndex = 31;
+            this.SLTEmp.Text = "Show Employees";
+            this.SLTEmp.UseVisualStyleBackColor = true;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 15;
+            this.listBox2.Location = new System.Drawing.Point(416, 12);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(350, 304);
+            this.listBox2.TabIndex = 30;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            // 
             // SLTBttn
             // 
-            this.SLTBttn.Location = new System.Drawing.Point(103, 328);
+            this.SLTBttn.Location = new System.Drawing.Point(0, 328);
             this.SLTBttn.Name = "SLTBttn";
             this.SLTBttn.Size = new System.Drawing.Size(117, 47);
             this.SLTBttn.TabIndex = 29;
-            this.SLTBttn.Text = "SELECT";
+            this.SLTBttn.Text = "Show Clients";
             this.SLTBttn.UseVisualStyleBackColor = true;
             this.SLTBttn.Click += new System.EventHandler(this.SLTBttn_Click);
             // 
@@ -1386,5 +1409,7 @@ namespace Companhia_Ginasios
         private CheckBox checkBox4;
         private Button button1;
         private Button SLTBttn;
+        private Button SLTEmp;
+        private ListBox listBox2;
     }
 }
