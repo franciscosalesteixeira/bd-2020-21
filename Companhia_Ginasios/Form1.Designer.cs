@@ -45,7 +45,12 @@ namespace Companhia_Ginasios
             this.txtNIF = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.SLTEmp = new System.Windows.Forms.Button();
+            this.Clients_panel = new System.Windows.Forms.Panel();
+            this.ListCoursesCB = new System.Windows.Forms.CheckBox();
+            this.ListEquipCB = new System.Windows.Forms.CheckBox();
+            this.ListProductsCB = new System.Windows.Forms.CheckBox();
+            this.ListEmpCB = new System.Windows.Forms.CheckBox();
+            this.ListClientsCB = new System.Windows.Forms.CheckBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.SLTBttn = new System.Windows.Forms.Button();
             this.RemoveBttn = new System.Windows.Forms.Button();
@@ -277,7 +282,12 @@ namespace Companhia_Ginasios
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.SLTEmp);
+            this.panel2.Controls.Add(this.Clients_panel);
+            this.panel2.Controls.Add(this.ListCoursesCB);
+            this.panel2.Controls.Add(this.ListEquipCB);
+            this.panel2.Controls.Add(this.ListProductsCB);
+            this.panel2.Controls.Add(this.ListEmpCB);
+            this.panel2.Controls.Add(this.ListClientsCB);
             this.panel2.Controls.Add(this.listBox2);
             this.panel2.Controls.Add(this.SLTBttn);
             this.panel2.Controls.Add(this.listBox1);
@@ -295,35 +305,88 @@ namespace Companhia_Ginasios
             this.panel2.Controls.Add(this.OkBttn);
             this.panel2.Location = new System.Drawing.Point(21, 38);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(782, 385);
+            this.panel2.Size = new System.Drawing.Size(782, 409);
             this.panel2.TabIndex = 9;
             // 
-            // SLTEmp
+            // Clients_panel
             // 
-            this.SLTEmp.Location = new System.Drawing.Point(126, 328);
-            this.SLTEmp.Name = "SLTEmp";
-            this.SLTEmp.Size = new System.Drawing.Size(117, 47);
-            this.SLTEmp.TabIndex = 31;
-            this.SLTEmp.Text = "Show Employees";
-            this.SLTEmp.UseVisualStyleBackColor = true;
+            this.Clients_panel.Location = new System.Drawing.Point(402, 12);
+            this.Clients_panel.Name = "Clients_panel";
+            this.Clients_panel.Size = new System.Drawing.Size(364, 303);
+            this.Clients_panel.TabIndex = 36;
+            // 
+            // ListCoursesCB
+            // 
+            this.ListCoursesCB.AutoSize = true;
+            this.ListCoursesCB.Location = new System.Drawing.Point(402, 387);
+            this.ListCoursesCB.Name = "ListCoursesCB";
+            this.ListCoursesCB.Size = new System.Drawing.Size(86, 19);
+            this.ListCoursesCB.TabIndex = 35;
+            this.ListCoursesCB.Text = "ListCourses";
+            this.ListCoursesCB.UseVisualStyleBackColor = true;
+            this.ListCoursesCB.CheckedChanged += new System.EventHandler(this.ListCoursesCB_CheckedChanged);
+            // 
+            // ListEquipCB
+            // 
+            this.ListEquipCB.AutoSize = true;
+            this.ListEquipCB.Location = new System.Drawing.Point(294, 387);
+            this.ListEquipCB.Name = "ListEquipCB";
+            this.ListEquipCB.Size = new System.Drawing.Size(102, 19);
+            this.ListEquipCB.TabIndex = 34;
+            this.ListEquipCB.Text = "ListEquipment";
+            this.ListEquipCB.UseVisualStyleBackColor = true;
+            this.ListEquipCB.CheckedChanged += new System.EventHandler(this.ListEquipCB_CheckedChanged);
+            // 
+            // ListProductsCB
+            // 
+            this.ListProductsCB.AutoSize = true;
+            this.ListProductsCB.Location = new System.Drawing.Point(197, 387);
+            this.ListProductsCB.Name = "ListProductsCB";
+            this.ListProductsCB.Size = new System.Drawing.Size(91, 19);
+            this.ListProductsCB.TabIndex = 33;
+            this.ListProductsCB.Text = "ListProducts";
+            this.ListProductsCB.UseVisualStyleBackColor = true;
+            this.ListProductsCB.CheckedChanged += new System.EventHandler(this.ListProductsCB_CheckedChanged);
+            // 
+            // ListEmpCB
+            // 
+            this.ListEmpCB.AutoSize = true;
+            this.ListEmpCB.Location = new System.Drawing.Point(90, 387);
+            this.ListEmpCB.Name = "ListEmpCB";
+            this.ListEmpCB.Size = new System.Drawing.Size(101, 19);
+            this.ListEmpCB.TabIndex = 32;
+            this.ListEmpCB.Text = "ListEmployees";
+            this.ListEmpCB.UseVisualStyleBackColor = true;
+            this.ListEmpCB.CheckedChanged += new System.EventHandler(this.ListEmpCB_CheckedChanged);
+            // 
+            // ListClientsCB
+            // 
+            this.ListClientsCB.AutoSize = true;
+            this.ListClientsCB.Location = new System.Drawing.Point(4, 387);
+            this.ListClientsCB.Name = "ListClientsCB";
+            this.ListClientsCB.Size = new System.Drawing.Size(80, 19);
+            this.ListClientsCB.TabIndex = 31;
+            this.ListClientsCB.Text = "ListClients";
+            this.ListClientsCB.UseVisualStyleBackColor = true;
+            this.ListClientsCB.CheckedChanged += new System.EventHandler(this.ListClientsCB_CheckedChanged);
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 15;
-            this.listBox2.Location = new System.Drawing.Point(416, 12);
+            this.listBox2.Location = new System.Drawing.Point(0, 11);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(350, 304);
+            this.listBox2.Size = new System.Drawing.Size(350, 364);
             this.listBox2.TabIndex = 30;
             this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
             // SLTBttn
             // 
-            this.SLTBttn.Location = new System.Drawing.Point(0, 328);
+            this.SLTBttn.Location = new System.Drawing.Point(103, 328);
             this.SLTBttn.Name = "SLTBttn";
             this.SLTBttn.Size = new System.Drawing.Size(117, 47);
             this.SLTBttn.TabIndex = 29;
-            this.SLTBttn.Text = "Show Clients";
+            this.SLTBttn.Text = "SELECT";
             this.SLTBttn.UseVisualStyleBackColor = true;
             this.SLTBttn.Click += new System.EventHandler(this.SLTBttn_Click);
             // 
@@ -1409,7 +1472,12 @@ namespace Companhia_Ginasios
         private CheckBox checkBox4;
         private Button button1;
         private Button SLTBttn;
-        private Button SLTEmp;
         private ListBox listBox2;
+        private CheckBox ListCoursesCB;
+        private CheckBox ListEquipCB;
+        private CheckBox ListProductsCB;
+        private CheckBox ListEmpCB;
+        private CheckBox ListClientsCB;
+        private Panel Clients_panel;
     }
 }

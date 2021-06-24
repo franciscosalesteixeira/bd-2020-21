@@ -19,6 +19,7 @@ namespace Companhia_Ginasios
         {
             InitializeComponent();
             DisplayGym(db.DbServer, db.DbName, db.UserName, db.UserPass);
+            HideListBttns();
         }
 
         private void DisplayGym(string dbServer, string dbName, string userName, string userPass)
@@ -119,11 +120,16 @@ namespace Companhia_Ginasios
             HideAddBttns();
             HidePanelPerson();
             ShowDisplayBttns();
+            HideListBttns();
             listBox1.Visible = true;
             listBox1.Enabled = true;
             panel1.Visible = false;
             panel1.Enabled = false;
-
+            ListClientsCB.Checked = false;
+            ListEmpCB.Checked = false;
+            ListProductsCB.Checked = false;
+            ListEquipCB.Checked = false;
+            ListCoursesCB.Checked = false;
         }
 
        private void SaveBttn_Click(object sender, EventArgs e)
@@ -190,7 +196,8 @@ namespace Companhia_Ginasios
             label8.Visible = true;
             panel2.Enabled = true;
             panel2.Visible = true;
-
+            SLTBttn.Visible = true;
+            SLTBttn.Enabled = true;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -253,17 +260,45 @@ namespace Companhia_Ginasios
                                                        "; uid = " + userName + ";" + "password = " + userPass);
 
             SqlCommand sqlcmd = new SqlCommand();
+            SqlCommand sqlcmd2 = new SqlCommand();
+
+            string gestor = "";
 
             CN.Open();
             if (CN.State == ConnectionState.Open)
             {
                 db.Logged = true;
+
+                sqlcmd2.CommandText = "SELECT Numero_CC FROM GymCompany.Pessoa WHERE Nome=@gestor";
+                sqlcmd2.Parameters.Clear();
+                sqlcmd2.Parameters.AddWithValue("@gestor", gym.Gestor);
+                sqlcmd2.Connection = CN;
+
+                try
+                {
+                    SqlDataReader reader;
+                    reader = sqlcmd2.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        gestor = reader["Numero_CC"].ToString();
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    db.Logged = false;
+                    db.Error = "Failed to get manager id in database. \n ERROR MESSAGE: \n" + ex.Message;
+                    MessageBox.Show(db.Error, "An Error Occurred");
+                }
+
                 sqlcmd.CommandText = "UPDATE GymCompany.Ginasio SET Telefone=@telefone, Morada=@morada, Gestor=@gestor WHERE NIF=@nif";
                 sqlcmd.Parameters.Clear();
                 sqlcmd.Parameters.AddWithValue("@nif", gym.NIF);
                 sqlcmd.Parameters.AddWithValue("@telefone", gym.Telefone);
                 sqlcmd.Parameters.AddWithValue("@morada", gym.Morada);
-                sqlcmd.Parameters.AddWithValue("@gestor", gym.Gestor);
+                sqlcmd.Parameters.AddWithValue("@gestor", gestor);
                 sqlcmd.Connection = CN;
             }
 
@@ -336,45 +371,91 @@ namespace Companhia_Ginasios
 
         private void EditBttn_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex < 0)
+            if (ListClientsCB.Checked)
             {
-                MessageBox.Show("Please select a contact to edit");
-                return;
+
             }
-            textNIFdisplay.ReadOnly = false;
-            textPhonedisplay.ReadOnly = false;
-            textManagerdisplay.ReadOnly = false;
-            textAdressdisplay.ReadOnly = false;
-            ShowEditBttns();
-            listBox1.Enabled = false;
+            else if (ListEmpCB.Checked)
+            {
+
+            }
+            else if (ListProductsCB.Checked)
+            {
+
+            }
+            else if (ListEquipCB.Checked)
+            {
+
+            }
+            else if (ListCoursesCB.Checked)
+            {
+
+            }
+            else
+            {
+                if (listBox1.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Please select a contact to edit");
+                    return;
+                }
+                textNIFdisplay.ReadOnly = false;
+                textPhonedisplay.ReadOnly = false;
+                textManagerdisplay.ReadOnly = false;
+                textAdressdisplay.ReadOnly = false;
+                ShowEditBttns();
+                listBox1.Enabled = false;
+            }
         }
 
         private void OkBttn_Click(object sender, EventArgs e)
         {
-            HideEditBttns();
-
-            Ginasio gym = new Ginasio();
-            try
+            if (ListClientsCB.Checked)
             {
-                gym.NIF = textNIFdisplay.Text;
-                gym.Telefone = textPhonedisplay.Text;
-                gym.Morada = textAdressdisplay.Text;
-                gym.Gestor = textManagerdisplay.Text;
 
-                EditGym(db.DbServer, db.DbName, db.UserName, db.UserPass, gym);
             }
-            catch (Exception ex)
+            else if (ListEmpCB.Checked)
             {
-                MessageBox.Show(ex.Message);
-            }
 
-            textNIFdisplay.ReadOnly = true;
-            textPhonedisplay.ReadOnly = true;
-            textManagerdisplay.ReadOnly = true;
-            textAdressdisplay.ReadOnly = true;
-            listBox1.Enabled = true;
-            RefreshListBox();
-            ShowDisplayBttns();
+            }
+            else if (ListProductsCB.Checked)
+            {
+
+            }
+            else if (ListEquipCB.Checked)
+            {
+
+            }
+            else if (ListCoursesCB.Checked)
+            {
+
+            }
+            else
+            {
+                HideEditBttns();
+
+                Ginasio gym = new Ginasio();
+                try
+                {
+                    gym.NIF = textNIFdisplay.Text;
+                    gym.Telefone = textPhonedisplay.Text;
+                    gym.Morada = textAdressdisplay.Text;
+                    gym.Gestor = textManagerdisplay.Text;
+
+                    EditGym(db.DbServer, db.DbName, db.UserName, db.UserPass, gym);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                textNIFdisplay.ReadOnly = true;
+                textPhonedisplay.ReadOnly = true;
+                textManagerdisplay.ReadOnly = true;
+                textAdressdisplay.ReadOnly = true;
+                listBox1.Enabled = true;
+                RefreshListBox();
+                ShowDisplayBttns();
+            }
         }
 
         private void CancelBttn_Click(object sender, EventArgs e)
@@ -983,7 +1064,10 @@ namespace Companhia_Ginasios
         {
             panel3.Enabled = true;
             panel3.Visible = true;
-
+            panel1.Enabled = false;
+            panel1.Visible = false;
+            panel2.Enabled = false;
+            panel2.Visible = false;
         }
         public void HidePanelPerson()
         {
@@ -993,29 +1077,145 @@ namespace Companhia_Ginasios
 
         private void SLTBttn_Click(object sender, EventArgs e)
         {
-            String morada = listBox1.Items[listBox1.SelectedIndex].ToString();
-            gymSelected = GetGymNif(db.DbServer, db.DbName, db.UserName, db.UserPass, morada);
-            //Ativar outro panel com botoes para listar os clientes, funcionarios, produtos, etc deste gym
-            //Acrescentar tbm botoes neste panel para associar clientes, funcionarios, produtos, etc a este gym
-            listBox2
-
-            numerocliente = SELECT GymCompany.Tem_Clientes.Numero_Cliente FROM GymCompany.Tem_Clientes WHERE GymCompany.Tem_Clientes.NIF = gymSelected;
-
-            SELECT GymCompany.Pessoa.Nome
-            FROM GymCompany.Pessoa INNER JOIN GymCompany.Cliente ON GymCompany.Cliente.Numero_CC = GymCompany.Pessoa.Numero_CC
-            WHERE GymCompany.Cliente.Numero_Cliente = numerocliente;
+            if (listBox1.SelectedIndex > -1)
+            {
+                String morada = listBox1.Items[listBox1.SelectedIndex].ToString();
+                gymSelected = GetGymNif(db.DbServer, db.DbName, db.UserName, db.UserPass, morada);
+                //Ativar outro panel com botoes para listar os clientes, funcionarios, produtos, etc deste gym
+                //Acrescentar tbm botoes neste panel para associar clientes, funcionarios, produtos, etc a este gym
+                ShowListBttns();
+            }
+            else
+            {
+                MessageBox.Show("Please select a gym");
+            }
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if (listBox2.SelectedIndex >= 0 && ListClientsCB.Checked)
+            {
+                //ShowClient(db.DbServer, db.DbName, db.UserName, db.UserPass);
+            }
+            if (listBox2.SelectedIndex >= 0 && ListEquipCB.Checked)
+            {
+                //ShowEmp(db.DbServer, db.DbName, db.UserName, db.UserPass);
+            }
+            if (listBox2.SelectedIndex >= 0 && ListProductsCB.Checked)
+            {
+                //ShowProduct(db.DbServer, db.DbName, db.UserName, db.UserPass);
+            }
+            if (listBox2.SelectedIndex >= 0 && ListEquipCB.Checked)
+            {
+                //ShowEquip(db.DbServer, db.DbName, db.UserName, db.UserPass);
+            }
+            if (listBox2.SelectedIndex >= 0 && ListCoursesCB.Checked)
+            {
+                //ShowCourse(db.DbServer, db.DbName, db.UserName, db.UserPass);
+            }
+        }
+
+        private void ListClientsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ListClientsCB.Checked)
+            {
+                HideDisplayBttns();
+                panel2.Enabled = true;
+                panel2.Visible = true;
+                listBox2.Enabled = true;
+                listBox2.Visible = true;
+                listBox2.Items.Clear();
+                Clients_panel.Visible = true;
+                Clients_panel.Enabled = true;
+
+                DisplayClients(db.DbServer, db.DbName, db.UserName, db.UserPass);
+
+                ListEmpCB.Checked = false;
+                ListProductsCB.Checked = false;
+                ListEquipCB.Checked = false;
+                ListCoursesCB.Checked = false;
+            }
+        }
+
+        private void ListEmpCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ListEmpCB.Checked)
+            {
+                HideDisplayBttns();
+                panel2.Enabled = true;
+                panel2.Visible = true;
+                listBox2.Enabled = true;
+                listBox2.Visible = true;
+                listBox2.Items.Clear();
+                DisplayEmps(db.DbServer, db.DbName, db.UserName, db.UserPass);
+
+                ListClientsCB.Checked = false;
+                ListProductsCB.Checked = false;
+                ListEquipCB.Checked = false;
+                ListCoursesCB.Checked = false;
+            }
+        }
+
+        private void ListProductsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ListProductsCB.Checked)
+            {
+                HideDisplayBttns();
+                panel2.Enabled = true;
+                panel2.Visible = true;
+                listBox2.Enabled = true;
+                listBox2.Visible = true;
+                listBox2.Items.Clear();
+
+                DisplayProducts(db.DbServer, db.DbName, db.UserName, db.UserPass);
+
+                ListEmpCB.Checked = false;
+                ListClientsCB.Checked = false;
+                ListEquipCB.Checked = false;
+                ListCoursesCB.Checked = false;
+            }
+        }
+
+        private void ListEquipCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ListEquipCB.Checked)
+            {
+                HideDisplayBttns();
+                panel2.Enabled = true;
+                panel2.Visible = true;
+                listBox2.Enabled = true;
+                listBox2.Visible = true;
+                listBox2.Items.Clear();
+                DisplayEquips(db.DbServer, db.DbName, db.UserName, db.UserPass);
+
+                ListEmpCB.Checked = false;
+                ListProductsCB.Checked = false;
+                ListClientsCB.Checked = false;
+                ListCoursesCB.Checked = false;
+            }
+        }
+
+        private void ListCoursesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ListCoursesCB.Checked)
+            {
+                HideDisplayBttns();
+                panel2.Enabled = true;
+                panel2.Visible = true;
+                listBox2.Enabled = true;
+                listBox2.Visible = true;
+                listBox2.Items.Clear();
+                DisplayCourses(db.DbServer, db.DbName, db.UserName, db.UserPass);
+
+                ListEmpCB.Checked = false;
+                ListProductsCB.Checked = false;
+                ListEquipCB.Checked = false;
+                ListClientsCB.Checked = false;
+            }
         }
 
         private void DisplayClients(string dbServer, string dbName, string userName, string userPass)
         {
-
-            panel1.Visible = false;
-            panel1.Enabled = false;
             HidePanelPerson();
             miscPanel.Visible = false;
             miscPanel.Enabled = false;
@@ -1028,16 +1228,19 @@ namespace Companhia_Ginasios
                 CN.Open();
                 if (CN.State == ConnectionState.Open)
                 {
-                    string morada = "";
                     db.Logged = true;
-                    SqlCommand sqlcmd = new SqlCommand("SELECT * FROM GymCompany.Tem_Funcionarios; ", CN);
+                    SqlCommand sqlcmd = new SqlCommand("SELECT * FROM GymCompany.Tem_Clientes WHERE NIF=@nif;");
+                    sqlcmd.Parameters.Clear();
+                    sqlcmd.Parameters.AddWithValue("@nif", gymSelected);
+                    sqlcmd.Connection = CN;
+
                     SqlDataReader reader;
                     reader = sqlcmd.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        morada = reader["Morada"].ToString();
-                        listBox1.Items.Add(morada);
+                        string client = reader["Numero_Cliente"].ToString();
+                        listBox2.Items.Add(client);
                     }
                 }
             }
@@ -1050,7 +1253,170 @@ namespace Companhia_Ginasios
 
             if (CN.State == ConnectionState.Open)
                 CN.Close();
+        }
 
+        private void DisplayEmps(string dbServer, string dbName, string userName, string userPass)
+        {
+            HidePanelPerson();
+            miscPanel.Visible = false;
+            miscPanel.Enabled = false;
+
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                        "; uid = " + userName + ";" + "password = " + userPass);
+
+            try
+            {
+                CN.Open();
+                if (CN.State == ConnectionState.Open)
+                {
+                    db.Logged = true;
+                    SqlCommand sqlcmd = new SqlCommand("SELECT * FROM GymCompany.Tem_Funcionarios WHERE NIF=@nif;");
+                    sqlcmd.Parameters.Clear();
+                    sqlcmd.Parameters.AddWithValue("@nif", gymSelected);
+                    sqlcmd.Connection = CN;
+
+                    SqlDataReader reader;
+                    reader = sqlcmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        string emp = reader["Numero_Funcionario"].ToString();
+                        listBox2.Items.Add(emp);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to display data due to the following error: \r\n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
+        private void DisplayProducts(string dbServer, string dbName, string userName, string userPass)
+        {
+            HidePanelPerson();
+            miscPanel.Visible = false;
+            miscPanel.Enabled = false;
+
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                        "; uid = " + userName + ";" + "password = " + userPass);
+
+            try
+            {
+                CN.Open();
+                if (CN.State == ConnectionState.Open)
+                {
+                    db.Logged = true;
+                    SqlCommand sqlcmd = new SqlCommand("SELECT * FROM GymCompany.Vende WHERE NIF=@nif;");
+                    sqlcmd.Parameters.Clear();
+                    sqlcmd.Parameters.AddWithValue("@nif", gymSelected);
+                    sqlcmd.Connection = CN;
+
+                    SqlDataReader reader;
+                    reader = sqlcmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        string product = reader["Codigo"].ToString();
+                        listBox2.Items.Add(product);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to display data due to the following error: \r\n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
+        private void DisplayEquips(string dbServer, string dbName, string userName, string userPass)
+        {
+            HidePanelPerson();
+            miscPanel.Visible = false;
+            miscPanel.Enabled = false;
+
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                        "; uid = " + userName + ";" + "password = " + userPass);
+
+            try
+            {
+                CN.Open();
+                if (CN.State == ConnectionState.Open)
+                {
+                    db.Logged = true;
+                    SqlCommand sqlcmd = new SqlCommand("SELECT * FROM GymCompany.Possui WHERE NIF=@nif;");
+                    sqlcmd.Parameters.Clear();
+                    sqlcmd.Parameters.AddWithValue("@nif", gymSelected);
+                    sqlcmd.Connection = CN;
+
+                    SqlDataReader reader;
+                    reader = sqlcmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        string equip = reader["Designacao"].ToString();
+                        listBox2.Items.Add(equip);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to display data due to the following error: \r\n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
+        }
+
+        private void DisplayCourses(string dbServer, string dbName, string userName, string userPass)
+        {
+            HidePanelPerson();
+            miscPanel.Visible = false;
+            miscPanel.Enabled = false;
+
+            SqlConnection CN = new SqlConnection("Data Source = " + dbServer + " ;" + "Initial Catalog = " + dbName +
+                                                        "; uid = " + userName + ";" + "password = " + userPass);
+
+            try
+            {
+                CN.Open();
+                if (CN.State == ConnectionState.Open)
+                {
+                    db.Logged = true;
+                    SqlCommand sqlcmd = new SqlCommand("SELECT * FROM GymCompany.Oferece WHERE NIF=@nif;");
+                    sqlcmd.Parameters.Clear();
+                    sqlcmd.Parameters.AddWithValue("@nif", gymSelected);
+                    sqlcmd.Connection = CN;
+
+                    SqlDataReader reader;
+                    reader = sqlcmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        string course = reader["Designacao"].ToString();
+                        listBox2.Items.Add(course);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                db.Logged = false;
+                db.Error = "Failed to display data due to the following error: \r\n" + ex.Message;
+                MessageBox.Show(db.Error, "An Error Occurred");
+            }
+
+            if (CN.State == ConnectionState.Open)
+                CN.Close();
         }
 
         private string GetGymNif (string dbServer, string dbName, string userName, string userPass, string morada)
@@ -1090,12 +1456,54 @@ namespace Companhia_Ginasios
             return nif;
         }
 
+        private void ShowListBttns()
+        {
+            listBox2.Enabled = true;
+            listBox2.Visible = true;
+            ListClientsCB.Visible = true;
+            ListClientsCB.Enabled = true;
+            ListEmpCB.Visible = true;
+            ListEmpCB.Enabled = true;
+            ListProductsCB.Enabled = true;
+            ListProductsCB.Visible = true;
+            ListEquipCB.Visible = true;
+            ListEquipCB.Enabled = true;
+            ListCoursesCB.Enabled = true;
+            ListCoursesCB.Visible = true;
+        }
+
+        private void HideListBttns()
+        {
+            listBox2.Enabled = false;
+            listBox2.Visible = false;
+            ListClientsCB.Visible = false;
+            ListClientsCB.Enabled = false;
+            ListEmpCB.Visible = false;
+            ListEmpCB.Enabled = false;
+            ListProductsCB.Enabled = false;
+            ListProductsCB.Visible = false;
+            ListEquipCB.Visible = false;
+            ListEquipCB.Enabled = false;
+            ListCoursesCB.Enabled = false;
+            ListCoursesCB.Visible = false;
+            Clients_panel.Visible = false;
+            Clients_panel.Enabled = false;
+            //Emps_panel.Visible = false;
+            //Emps_panel.Enabled = false;
+            //Products_panel.Visible = false;
+            //Products_panel.Enabled = false;
+            //Equips_panel.Visible = false;
+            //Equips_panel.Enabled = false;
+            //Courses_panel.Visible = false;
+            //Courses_panel.Enabled = false;
+        }
 
         private void AddPerson_Click_1(object sender, EventArgs e)
         {
             checkBox3.Checked = true;
             ClearFields();
             HideDisplayBttns();
+            HideAddBttns();
             listBox1.Visible = false;
             listBox1.Enabled = false;
             miscPanel.Visible = false;
@@ -1588,8 +1996,10 @@ namespace Companhia_Ginasios
             label7.Visible = false;
             label8.Enabled = false;
             label8.Visible = false;
-            panel2.Enabled = false;
-            panel2.Visible = false;
+            panel1.Enabled = false;
+            panel1.Visible = false;
+            SLTBttn.Enabled = false;
+            SLTBttn.Visible = false;
         }
 
 
@@ -1636,6 +2046,10 @@ namespace Companhia_Ginasios
             label4.Visible = true;
             txtManager.Enabled = true;
             txtManager.Visible = true;
+            panel1.Enabled = false;
+            panel1.Visible = false;
+            panel2.Enabled = false;
+            panel2.Visible = false;
         }
 
         public void ShowEditBttns()
