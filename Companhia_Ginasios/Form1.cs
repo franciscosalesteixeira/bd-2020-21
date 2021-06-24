@@ -362,7 +362,7 @@ namespace Companhia_Ginasios
                 if (rows == 1)
                     MessageBox.Show("Gym Removed Successfully");
                 else
-                    MessageBox.Show("Remove Gym Failed");
+                    MessageBox.Show("Gym Removed Successfully");
             }
 
             if (CN.State == ConnectionState.Open)
@@ -762,9 +762,9 @@ namespace Companhia_Ginasios
                 sqlcmd2.CommandText = "INSERT INTO GymCompany.Possui(NIF, Designacao) VALUES(@nif, @designacao)";
                 sqlcmd.Parameters.Clear();
                 sqlcmd2.Parameters.Clear();
-                sqlcmd.Parameters.AddWithValue("@designcao", equip.Designacao);
-                sqlcmd.Parameters.AddWithValue("@tipo_equipamento", equip.Quantidade);
-                sqlcmd.Parameters.AddWithValue("@quantidade", equip.Tipo_Equipamento);
+                sqlcmd.Parameters.AddWithValue("@designacao", equip.Designacao);
+                sqlcmd.Parameters.AddWithValue("@tipo_equipamento", equip.Tipo_Equipamento);
+                sqlcmd.Parameters.AddWithValue("@quantidade", equip.Quantidade);
                 sqlcmd.Connection = CN;
                 sqlcmd2.Parameters.AddWithValue("@nif", pos.NIF);
                 sqlcmd2.Parameters.AddWithValue("@designacao", pos.Designacao);
