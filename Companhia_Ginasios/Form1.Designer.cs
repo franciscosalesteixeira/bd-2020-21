@@ -45,7 +45,49 @@ namespace Companhia_Ginasios
             this.txtNIF = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Courses_panel = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
             this.Clients_panel = new System.Windows.Forms.Panel();
+            this.label_ST = new System.Windows.Forms.Label();
+            this.text_ST = new System.Windows.Forms.TextBox();
+            this.label_CN = new System.Windows.Forms.Label();
+            this.text_CN = new System.Windows.Forms.TextBox();
+            this.label_CC = new System.Windows.Forms.Label();
+            this.text_CC = new System.Windows.Forms.TextBox();
+            this.Products_panel = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Emps_panel = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.Equips_panel = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
             this.ListCoursesCB = new System.Windows.Forms.CheckBox();
             this.ListEquipCB = new System.Windows.Forms.CheckBox();
             this.ListProductsCB = new System.Windows.Forms.CheckBox();
@@ -156,6 +198,11 @@ namespace Companhia_Ginasios
             this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.Courses_panel.SuspendLayout();
+            this.Clients_panel.SuspendLayout();
+            this.Products_panel.SuspendLayout();
+            this.Emps_panel.SuspendLayout();
+            this.Equips_panel.SuspendLayout();
             this.miscPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -282,7 +329,11 @@ namespace Companhia_Ginasios
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.Courses_panel);
             this.panel2.Controls.Add(this.Clients_panel);
+            this.panel2.Controls.Add(this.Products_panel);
+            this.panel2.Controls.Add(this.Emps_panel);
+            this.panel2.Controls.Add(this.Equips_panel);
             this.panel2.Controls.Add(this.ListCoursesCB);
             this.panel2.Controls.Add(this.ListEquipCB);
             this.panel2.Controls.Add(this.ListProductsCB);
@@ -308,12 +359,401 @@ namespace Companhia_Ginasios
             this.panel2.Size = new System.Drawing.Size(782, 409);
             this.panel2.TabIndex = 9;
             // 
+            // Courses_panel
+            // 
+            this.Courses_panel.Controls.Add(this.label24);
+            this.Courses_panel.Controls.Add(this.textBox16);
+            this.Courses_panel.Controls.Add(this.label23);
+            this.Courses_panel.Controls.Add(this.textBox15);
+            this.Courses_panel.Controls.Add(this.label17);
+            this.Courses_panel.Controls.Add(this.textBox9);
+            this.Courses_panel.Controls.Add(this.label21);
+            this.Courses_panel.Controls.Add(this.textBox13);
+            this.Courses_panel.Controls.Add(this.label22);
+            this.Courses_panel.Controls.Add(this.textBox14);
+            this.Courses_panel.Location = new System.Drawing.Point(413, 15);
+            this.Courses_panel.Name = "Courses_panel";
+            this.Courses_panel.Size = new System.Drawing.Size(364, 303);
+            this.Courses_panel.TabIndex = 40;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(27, 259);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(53, 15);
+            this.label24.TabIndex = 9;
+            this.label24.Text = "Capacity";
+            // 
+            // textBox16
+            // 
+            this.textBox16.Location = new System.Drawing.Point(24, 277);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.ReadOnly = true;
+            this.textBox16.Size = new System.Drawing.Size(298, 23);
+            this.textBox16.TabIndex = 8;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(27, 194);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(64, 15);
+            this.label23.TabIndex = 7;
+            this.label23.Text = "Week Days";
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(24, 212);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.ReadOnly = true;
+            this.textBox15.Size = new System.Drawing.Size(298, 23);
+            this.textBox15.TabIndex = 6;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(27, 132);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(33, 15);
+            this.label17.TabIndex = 5;
+            this.label17.Text = "Time";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(24, 150);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
+            this.textBox9.Size = new System.Drawing.Size(298, 23);
+            this.textBox9.TabIndex = 4;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(27, 74);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(31, 15);
+            this.label21.TabIndex = 3;
+            this.label21.Text = "Type";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(24, 92);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.ReadOnly = true;
+            this.textBox13.Size = new System.Drawing.Size(298, 23);
+            this.textBox13.TabIndex = 2;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(27, 16);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(70, 15);
+            this.label22.TabIndex = 1;
+            this.label22.Text = "Designation";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(24, 34);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.ReadOnly = true;
+            this.textBox14.Size = new System.Drawing.Size(298, 23);
+            this.textBox14.TabIndex = 0;
+            // 
             // Clients_panel
             // 
-            this.Clients_panel.Location = new System.Drawing.Point(402, 12);
+            this.Clients_panel.Controls.Add(this.label_ST);
+            this.Clients_panel.Controls.Add(this.text_ST);
+            this.Clients_panel.Controls.Add(this.label_CN);
+            this.Clients_panel.Controls.Add(this.text_CN);
+            this.Clients_panel.Controls.Add(this.label_CC);
+            this.Clients_panel.Controls.Add(this.text_CC);
+            this.Clients_panel.Location = new System.Drawing.Point(391, 15);
             this.Clients_panel.Name = "Clients_panel";
             this.Clients_panel.Size = new System.Drawing.Size(364, 303);
             this.Clients_panel.TabIndex = 36;
+            // 
+            // label_ST
+            // 
+            this.label_ST.AutoSize = true;
+            this.label_ST.Location = new System.Drawing.Point(27, 208);
+            this.label_ST.Name = "label_ST";
+            this.label_ST.Size = new System.Drawing.Size(100, 15);
+            this.label_ST.TabIndex = 5;
+            this.label_ST.Text = "Subscription Type";
+            // 
+            // text_ST
+            // 
+            this.text_ST.Location = new System.Drawing.Point(24, 226);
+            this.text_ST.Name = "text_ST";
+            this.text_ST.ReadOnly = true;
+            this.text_ST.Size = new System.Drawing.Size(298, 23);
+            this.text_ST.TabIndex = 4;
+            // 
+            // label_CN
+            // 
+            this.label_CN.AutoSize = true;
+            this.label_CN.Location = new System.Drawing.Point(27, 132);
+            this.label_CN.Name = "label_CN";
+            this.label_CN.Size = new System.Drawing.Size(85, 15);
+            this.label_CN.TabIndex = 3;
+            this.label_CN.Text = "Client Number";
+            // 
+            // text_CN
+            // 
+            this.text_CN.Location = new System.Drawing.Point(24, 150);
+            this.text_CN.Name = "text_CN";
+            this.text_CN.ReadOnly = true;
+            this.text_CN.Size = new System.Drawing.Size(298, 23);
+            this.text_CN.TabIndex = 2;
+            // 
+            // label_CC
+            // 
+            this.label_CC.AutoSize = true;
+            this.label_CC.Location = new System.Drawing.Point(27, 45);
+            this.label_CC.Name = "label_CC";
+            this.label_CC.Size = new System.Drawing.Size(65, 15);
+            this.label_CC.TabIndex = 1;
+            this.label_CC.Text = "ID Number";
+            // 
+            // text_CC
+            // 
+            this.text_CC.Location = new System.Drawing.Point(24, 63);
+            this.text_CC.Name = "text_CC";
+            this.text_CC.ReadOnly = true;
+            this.text_CC.Size = new System.Drawing.Size(298, 23);
+            this.text_CC.TabIndex = 0;
+            // 
+            // Products_panel
+            // 
+            this.Products_panel.Controls.Add(this.label12);
+            this.Products_panel.Controls.Add(this.textBox4);
+            this.Products_panel.Controls.Add(this.label9);
+            this.Products_panel.Controls.Add(this.textBox1);
+            this.Products_panel.Controls.Add(this.label10);
+            this.Products_panel.Controls.Add(this.textBox2);
+            this.Products_panel.Controls.Add(this.label11);
+            this.Products_panel.Controls.Add(this.textBox3);
+            this.Products_panel.Location = new System.Drawing.Point(375, 15);
+            this.Products_panel.Name = "Products_panel";
+            this.Products_panel.Size = new System.Drawing.Size(364, 303);
+            this.Products_panel.TabIndex = 37;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(27, 233);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(36, 15);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "Stock";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(24, 251);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(298, 23);
+            this.textBox4.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(27, 161);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(33, 15);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Price";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(24, 179);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(298, 23);
+            this.textBox1.TabIndex = 4;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(27, 88);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 15);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Name";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(24, 106);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(298, 23);
+            this.textBox2.TabIndex = 2;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(27, 19);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(80, 15);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Product Code";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(24, 37);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(298, 23);
+            this.textBox3.TabIndex = 0;
+            // 
+            // Emps_panel
+            // 
+            this.Emps_panel.Controls.Add(this.label13);
+            this.Emps_panel.Controls.Add(this.textBox5);
+            this.Emps_panel.Controls.Add(this.label14);
+            this.Emps_panel.Controls.Add(this.textBox6);
+            this.Emps_panel.Controls.Add(this.label15);
+            this.Emps_panel.Controls.Add(this.textBox7);
+            this.Emps_panel.Controls.Add(this.label16);
+            this.Emps_panel.Controls.Add(this.textBox8);
+            this.Emps_panel.Location = new System.Drawing.Point(370, 15);
+            this.Emps_panel.Name = "Emps_panel";
+            this.Emps_panel.Size = new System.Drawing.Size(364, 303);
+            this.Emps_panel.TabIndex = 38;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(27, 233);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(38, 15);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Salary";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(24, 251);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(298, 23);
+            this.textBox5.TabIndex = 6;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(27, 161);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(30, 15);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Role";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(24, 179);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(298, 23);
+            this.textBox6.TabIndex = 4;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(27, 88);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(106, 15);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Employee Number";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(24, 106);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(298, 23);
+            this.textBox7.TabIndex = 2;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(27, 19);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(65, 15);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "ID Number";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(24, 37);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
+            this.textBox8.Size = new System.Drawing.Size(298, 23);
+            this.textBox8.TabIndex = 0;
+            // 
+            // Equips_panel
+            // 
+            this.Equips_panel.Controls.Add(this.label18);
+            this.Equips_panel.Controls.Add(this.textBox10);
+            this.Equips_panel.Controls.Add(this.label19);
+            this.Equips_panel.Controls.Add(this.textBox11);
+            this.Equips_panel.Controls.Add(this.label20);
+            this.Equips_panel.Controls.Add(this.textBox12);
+            this.Equips_panel.Location = new System.Drawing.Point(364, 9);
+            this.Equips_panel.Name = "Equips_panel";
+            this.Equips_panel.Size = new System.Drawing.Size(364, 303);
+            this.Equips_panel.TabIndex = 39;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(27, 215);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(69, 15);
+            this.label18.TabIndex = 5;
+            this.label18.Text = "Quantidade";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(24, 233);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
+            this.textBox10.Size = new System.Drawing.Size(298, 23);
+            this.textBox10.TabIndex = 4;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(27, 137);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(31, 15);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "Type";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(24, 155);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
+            this.textBox11.Size = new System.Drawing.Size(298, 23);
+            this.textBox11.TabIndex = 2;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(27, 56);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(70, 15);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Designation";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(24, 74);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
+            this.textBox12.Size = new System.Drawing.Size(298, 23);
+            this.textBox12.TabIndex = 0;
             // 
             // ListCoursesCB
             // 
@@ -1347,6 +1787,16 @@ namespace Companhia_Ginasios
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.Courses_panel.ResumeLayout(false);
+            this.Courses_panel.PerformLayout();
+            this.Clients_panel.ResumeLayout(false);
+            this.Clients_panel.PerformLayout();
+            this.Products_panel.ResumeLayout(false);
+            this.Products_panel.PerformLayout();
+            this.Emps_panel.ResumeLayout(false);
+            this.Emps_panel.PerformLayout();
+            this.Equips_panel.ResumeLayout(false);
+            this.Equips_panel.PerformLayout();
             this.miscPanel.ResumeLayout(false);
             this.miscPanel.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -1479,5 +1929,47 @@ namespace Companhia_Ginasios
         private CheckBox ListEmpCB;
         private CheckBox ListClientsCB;
         private Panel Clients_panel;
+        private Label label_ST;
+        private TextBox text_ST;
+        private Label label_CN;
+        private TextBox text_CN;
+        private Label label_CC;
+        private TextBox text_CC;
+        private Panel Products_panel;
+        private Label label9;
+        private TextBox textBox1;
+        private Label label10;
+        private TextBox textBox2;
+        private Label label11;
+        private TextBox textBox3;
+        private Panel Emps_panel;
+        private Panel Equips_panel;
+        private Panel Courses_panel;
+        private Label label24;
+        private TextBox textBox16;
+        private Label label23;
+        private TextBox textBox15;
+        private Label label17;
+        private TextBox textBox9;
+        private Label label21;
+        private TextBox textBox13;
+        private Label label22;
+        private TextBox textBox14;
+        private Label label18;
+        private TextBox textBox10;
+        private Label label19;
+        private TextBox textBox11;
+        private Label label20;
+        private TextBox textBox12;
+        private Label label13;
+        private TextBox textBox5;
+        private Label label14;
+        private TextBox textBox6;
+        private Label label15;
+        private TextBox textBox7;
+        private Label label16;
+        private TextBox textBox8;
+        private Label label12;
+        private TextBox textBox4;
     }
 }
