@@ -449,3 +449,65 @@ BEGIN
 	WHERE Designacao=@desig
 END
 GO
+
+
+--UDF que retorna os funcionarios que trabalham num ginásio com um salário superior 
+--à média do salario de todos os funcionarios presentes na dase de dados.
+GO
+CREATE FUNCTION GymCompany.AboveAVGSalaries(@nif INT)
+RETURNS @EmployeeInfo TABLE (
+	Nome					VARCHAR(30),
+	Numero_CC				INT,
+	Numero_Funcionario		INT,
+	Funcao					VARCHAR(30),
+	Salario					DECIMAL(10,2))
+AS
+BEGIN
+	DECLARE @num AS INT;
+	DECLARE FuncCursor CURSOR FOR
+	SELECT Numero_Funcionario FROM GymCompany.Tem_Funcionarios WHERE NIF = @nif;
+	OPEN FuncCursor;
+	FETCH FuncCursor INTO @num;
+	WHILE @@FETCH_STATUS=0
+	BEGIN
+		INSERT INTO @EmployeeInfo (Nome, Numero_CC, Numero_Funcionario, Funcao, Salario)
+			SELECT Nome, GymCompany.Funcionario.Numero_CC, Numero_Funcionario, Funcao, Salario 
+			FROM (GymCompany.Funcionario JOIN GymCompany.Pessoa 
+			ON GymCompany.Funcionario.Numero_CC=GymCompany.Pessoa.Numero_CC)
+			WHERE Numero_Funcionario=@num AND Salario > (SELECT AVG(Salario) FROM GymCompany.Funcionario);
+		FETCH FuncCursor INTO @num;
+	END;
+	CLOSE FuncCursor;
+	DEALLOCATE FuncCursor;
+	RETURN;
+END
+GO
+
+--Test:
+SELECT * FROM GymCompany.AboveAVGSalaries(124991734);
+SELECT * FROM GymCompany.AboveAVGSalaries(143328530);
+SELECT * FROM GymCompany.AboveAVGSalaries(174753276);
+GO
+
+
+--UDF para retornar os produtos com stock crítico: stock menor ou igual a 10
+GO
+CREATE FUNCTION GymCompany.CritcalStock()
+RETURNS @ProductCriticalStock TABLE(
+	Codigo	VARCHAR(15),
+	Nome	VARCHAR(30),
+	Preco	DECIMAL(4,2),
+	Stock	INT)
+AS
+BEGIN
+	INSERT @ProductCriticalStock (Codigo, Nome, Preco, Stock)
+		SELECT Codigo, Nome, Preco, Stock
+		FROM GymCompany.Produto
+		WHERE Stock < 11;
+	RETURN;
+END
+GO
+
+--test:
+SELECT * FROM GymCompany.CritcalStock();
+GO

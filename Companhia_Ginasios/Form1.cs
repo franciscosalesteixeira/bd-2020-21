@@ -460,14 +460,37 @@ namespace Companhia_Ginasios
 
         private void CancelBttn_Click(object sender, EventArgs e)
         {
-            HideEditBttns();
-            textNIFdisplay.ReadOnly = true;
-            textPhonedisplay.ReadOnly = true;
-            textManagerdisplay.ReadOnly = true;
-            textAdressdisplay.ReadOnly = true;
-            listBox1.Enabled = true;
-            RefreshListBox();
-            ShowDisplayBttns();
+            if (ListClientsCB.Checked)
+            {
+
+            }
+            else if (ListEmpCB.Checked)
+            {
+
+            }
+            else if (ListProductsCB.Checked)
+            {
+
+            }
+            else if (ListEquipCB.Checked)
+            {
+
+            }
+            else if (ListCoursesCB.Checked)
+            {
+
+            }
+            else
+            {
+                HideEditBttns();
+                textNIFdisplay.ReadOnly = true;
+                textPhonedisplay.ReadOnly = true;
+                textManagerdisplay.ReadOnly = true;
+                textAdressdisplay.ReadOnly = true;
+                listBox1.Enabled = true;
+                RefreshListBox();
+                ShowDisplayBttns();
+            }
         }
 
         private void RemoveBttn_Click(object sender, EventArgs e)
